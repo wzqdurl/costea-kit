@@ -320,6 +320,26 @@ html.anim .reveal.on{opacity:1;transform:none}
   .sheet .num{font-size:1.5rem}
   .header-in{gap:.8rem}
 }
+
+/* ---------- hoja suelta: muestra gratuita ---------- */
+.muestra-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:3.2rem;align-items:start}
+.muestra-points{margin-top:1.6rem;display:grid;gap:.6rem}
+.muestra-points li{list-style:none;display:flex;gap:.65rem;align-items:flex-start;font-size:1.02rem;color:var(--ink-2)}
+.muestra-points li svg{flex:none;margin-top:.28em}
+.muestra-card .folio-in{padding:1.6rem 1.7rem 1.5rem 4rem}
+.muestra-card .rows{margin-top:1.2rem;display:grid;gap:.5rem;font-size:.97rem}
+.muestra-card .btn{width:100%;margin-top:1.2rem;font-size:1.05rem}
+.muestra-card .fine{margin-top:.9rem;font-size:.84rem;color:var(--ink-3)}
+footer a{color:var(--oro)}
+/* Enlaces a las guías, al cierre del folio 05 */
+.guia-links{margin-top:2.2rem;border-top:4px double var(--ink);padding-top:1.2rem;max-width:45rem}
+.guia-links .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--rojo);display:block;margin-bottom:.7rem}
+.guia-links .leader{font-size:1.05rem;margin-top:.55rem}
+.guia-links a{color:var(--ink);font-weight:700;text-decoration:none}
+.guia-links a:hover{color:var(--rojo-osc);text-decoration:underline;text-underline-offset:4px}
+.guia-links .pg{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-3);white-space:nowrap}
+@media (max-width: 900px){ .muestra-grid{grid-template-columns:1fr} }
+@media (max-width: 520px){ .muestra-card .folio-in{padding:1.3rem 1.1rem 1.25rem 2.9rem} }
 </style>
 </head>
 <body>
@@ -332,6 +352,7 @@ html.anim .reveal.on{opacity:1;transform:none}
       <a href="#kit">El kit</a>
       <a href="#guia">La guía</a>
       <a href="#ejemplo">Ejemplo real</a>
+      <a href="#muestra">Muestra gratis</a>
       <a href="#como-calcular">Cómo se calcula</a>
       <a href="#preguntas">Preguntas</a>
     </nav>
@@ -578,6 +599,45 @@ html.anim .reveal.on{opacity:1;transform:none}
         </div>
         <p>Hacer esta cuenta a mano, plato por plato, toma horas y hay que repetirla cada vez que sube un ingrediente. El kit de COSTEA trae la plantilla con las fórmulas listas — banco de ingredientes, escandallo, precio sugerido con semáforo y punto de equilibrio — más la guía que explica cada paso con ejemplos. <a href="#comprar">Ver el kit completo</a>.</p>
       </article>
+      <div class="guia-links">
+        <span class="k">Guías gratuitas, paso a paso</span>
+        <div class="leader"><a href="guias/costear-un-casado.html">Cómo costear un casado en Costa Rica, paso a paso</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 01</span></div>
+        <div class="leader"><a href="guias/food-cost-porcentaje.html">Food cost: qué porcentaje es sano para una soda y cómo bajarlo</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 02</span></div>
+        <div class="leader"><a href="hoja-de-costeo-gratis.xlsx">La hoja de costeo gratuita, para practicar la cuenta</a><span class="dots" aria-hidden="true"></span><span class="pg">.XLSX</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOJA SUELTA · MUESTRA GRATUITA -->
+  <section id="muestra" style="padding-top:0">
+    <div class="wrap">
+      <div class="folio-head"><span class="no">HOJA SUELTA</span><span class="ln" aria-hidden="true"></span><span class="pg">Muestra gratuita</span></div>
+      <div class="muestra-grid">
+        <div>
+          <h2 class="title">Probá una hoja, <em>gratis</em></h2>
+          <p class="sub">No tenés que creernos nada: descargá la hoja de costeo del kit, costeá el plato que más vendés y mirá el número vos mismo. Si la cuenta te sirve, el kit completo te espera; si no, la hoja es tuya igual.</p>
+          <ul class="muestra-points">
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Viene con el casado costeado (₡1.476 por porción): primero ves la cuenta hecha, después la hacés vos</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Cambiás los precios del banco y las porciones por los tuyos, y todo se recalcula solo</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Trae el semáforo de food cost y el precio sugerido, igual que la hoja del kit</span></li>
+          </ul>
+        </div>
+        <div class="muestra-card reveal">
+          <div class="folio">
+            <div class="folio-in">
+              <div class="folio-top"><span>Hoja de costeo</span><span class="r">Muestra gratuita</span></div>
+              <div class="rows">
+                <div class="leader"><span>Plato de ejemplo precargado</span><span class="dots" aria-hidden="true"></span><span class="mono" style="font-weight:600">El casado</span></div>
+                <div class="leader"><span>Formato</span><span class="dots" aria-hidden="true"></span><span class="mono" style="font-weight:600">Excel (.xlsx)</span></div>
+                <div class="leader"><span>Funciona en</span><span class="dots" aria-hidden="true"></span><span class="mono" style="font-weight:600">Excel y Google Sheets</span></div>
+                <div class="leader"><span>Precio</span><span class="dots" aria-hidden="true"></span><span class="mono" style="font-weight:600;color:var(--verde)">Gratis</span></div>
+              </div>
+              <a class="btn" href="hoja-de-costeo-gratis.xlsx" download>Descargar la hoja gratis</a>
+              <p class="fine">Descarga directa: sin correo, sin registro, sin compromiso. Es una hoja suelta del kit — el kit completo trae las 7 hojas y la guía en PDF.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -666,6 +726,7 @@ html.anim .reveal.on{opacity:1;transform:none}
   <div class="wrap footer-in">
     <a class="logo" href="#top"><span class="dot"></span>COSTEA</a>
     <p>Kit de Costos y Precios para Sodas y Restaurantes — plantilla de Excel + guía en PDF. $14.99 pago único. Hecho para negocios de comida de Costa Rica y Latinoamérica.</p>
+    <p>Guías gratuitas: <a href="guias/costear-un-casado.html">cómo costear un casado</a> · <a href="guias/food-cost-porcentaje.html">food cost sano</a> · <a href="hoja-de-costeo-gratis.xlsx">hoja de costeo gratis</a></p>
     <p>© 2026 COSTEA</p>
   </div>
 </footer>
