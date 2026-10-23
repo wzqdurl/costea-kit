@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit de Costos y Precios para Sodas y Restaurantes — COSTEA</title>
+<meta name="description" content="Plantilla de Excel + guía práctica para calcular el costo real de cada plato, ponerle precio sin perder plata y saber cuántos platos necesita vender al mes. Pago único de $14.99.">
+<meta property="og:title" content="COSTEA — Kit de Costos y Precios para Sodas y Restaurantes">
+<meta property="og:description" content="Calculá el costo real de cada plato y ponéle precio sin perder plata. Excel + guía PDF, pago único $14.99.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/hoja-precio-sugerido.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Kit de Costos y Precios para Sodas y Restaurantes","brand":{"@type":"Brand","name":"COSTEA"},"description":"Plantilla de Excel de 7 hojas con fórmulas y guía PDF de 9 páginas para calcular costos por plato, precios sugeridos con food cost, punto de equilibrio, inventario y registro de ventas y gastos.","offers":{"@type":"Offer","price":"14.99","priceCurrency":"USD","availability":"https://schema.org/PreOrder"}}
+</script>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+:root{
+  --board:#0E2B20; --board-2:#123527; --chalk:#F2F0E6;
+  --paper:#FBFBF7; --ink:#182420; --ink-soft:#46544C;
+  --write:#F2B705; --write-soft:#FDF3D3;
+  --formula:#1E7A46; --formula-soft:#E4EFE7;
+  --warn:#C77F0A; --bad:#BE3A2B;
+  --line:#DBDED2; --line-dark:#2A4A3B;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--formula)}
+:focus-visible{outline:3px solid var(--write);outline-offset:2px}
+.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+.mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--board);border-bottom:1px solid var(--line-dark)}
+.header-in{display:flex;align-items:center;gap:1.5rem;padding:.7rem 0}
+.logo{font-weight:900;font-size:1.45rem;letter-spacing:.04em;color:var(--chalk);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.logo .dot{width:.62em;height:.62em;background:var(--write);border-radius:3px;display:inline-block}
+nav{margin-left:auto;display:flex;gap:1.4rem}
+nav a{color:var(--chalk);text-decoration:none;font-size:.95rem;font-weight:500;opacity:.85}
+nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-block;background:var(--write);color:#221A00;font-weight:800;text-decoration:none;padding:.8rem 1.5rem;border-radius:10px;border:0;cursor:pointer;font-size:1rem;line-height:1.2;box-shadow:0 2px 0 #B98A04;transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 3px 0 #B98A04}
+.btn.small{padding:.55rem 1rem;font-size:.92rem}
+.btn[disabled]{background:#C9CFC2;color:#5A655C;box-shadow:none;cursor:not-allowed;transform:none}
+
+/* ---------- hero ---------- */
+.hero{background:var(--board);color:var(--chalk);padding:3.8rem 0 4.2rem;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -10% -55% -10%;height:60%;background:radial-gradient(ellipse at center,rgba(242,183,5,.13),transparent 65%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:900;line-height:1.08;letter-spacing:-.01em}
+.hero h1 .hl{background:linear-gradient(transparent 62%,rgba(242,183,5,.55) 62%);padding:0 .06em}
+.hero .lead{margin-top:1.2rem;font-size:1.13rem;color:#D9DCCB;max-width:34rem}
+.hero .lead strong{color:#fff}
+.hero-points{margin-top:1.4rem;display:grid;gap:.45rem;font-size:1rem}
+.hero-points li{list-style:none;display:flex;gap:.6rem;align-items:baseline}
+.hero-points li::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:var(--formula);flex:none;transform:translateY(-1px)}
+.hero-cta{margin-top:1.8rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.hero-cta .alt{color:var(--chalk);font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.price-note{margin-top:.9rem;font-size:.9rem;color:#B9C2B2}
+.price-note b{color:var(--write);font-size:1.02rem}
+
+/* calculator card = mini planilla */
+.calc{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:1.4rem 1.4rem 1.2rem;box-shadow:0 18px 44px rgba(0,0,0,.35)}
+.calc h2{font-size:1.02rem;font-weight:800;margin-bottom:.2rem}
+.calc p.sub{font-size:.88rem;color:var(--ink-soft);margin-bottom:1rem}
+.calc label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.3rem}
+.calc .field{margin-bottom:.9rem}
+.calc input{width:100%;font-family:'IBM Plex Mono',monospace;font-size:1.15rem;font-weight:600;padding:.65rem .8rem;border:2px solid #D9B93A;border-radius:8px;background:var(--write-soft);color:var(--ink)}
+.calc input:focus{outline:3px solid rgba(30,122,70,.45);outline-offset:1px}
+.calc .out{display:flex;gap:.8rem;margin-top:1rem}
+.calc .out > div{flex:1;background:var(--formula-soft);border:1.5px solid #BCD2C2;border-radius:8px;padding:.6rem .8rem}
+.calc .out .k{font-size:.72rem;font-weight:700;color:var(--formula);letter-spacing:.02em}
+.calc .out .v{font-family:'IBM Plex Mono',monospace;font-size:1.3rem;font-weight:600}
+.semaforo{margin-top:.9rem;display:flex;align-items:center;gap:.65rem;font-weight:700;font-size:1rem;padding:.65rem .8rem;border-radius:8px;border:1.5px solid var(--line)}
+.semaforo .light{width:1.05rem;height:1.05rem;border-radius:50%;flex:none}
+.semaforo.ok{background:#EAF4EC;border-color:#BCD2C2}.semaforo.ok .light{background:#35A257}
+.semaforo.mid{background:#FDF3D3;border-color:#E5CE7E}.semaforo.mid .light{background:#E5A90C}
+.semaforo.bad{background:#FADBD6;border-color:#E5A79C}.semaforo.bad .light{background:var(--bad)}
+.calc .hint{margin-top:.7rem;font-size:.8rem;color:var(--ink-soft)}
+
+/* ---------- sections ---------- */
+section{padding:4.2rem 0}
+section + section{border-top:1px solid var(--line)}
+.kicker{font-weight:800;font-size:.85rem;color:var(--formula);margin-bottom:.5rem}
+h2.title{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:900;line-height:1.15;letter-spacing:-.01em;max-width:22em}
+.sub{margin-top:.8rem;color:var(--ink-soft);max-width:40rem}
+
+/* ejemplo */
+.ejemplo-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:2.6rem;align-items:start;margin-top:2rem}
+.numbers{display:grid;gap:1rem}
+.num-card{border:1.5px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.2rem;background:#fff}
+.num-card h3{font-size:1rem;font-weight:800;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.chip{font-size:.8rem;font-weight:800;padding:.28rem .6rem;border-radius:999px;white-space:nowrap}
+.chip.ok{background:#EAF4EC;color:#1E7A46;border:1.5px solid #BCD2C2}
+.chip.mid{background:#FDF3D3;color:#8A6104;border:1.5px solid #E5CE7E}
+.num-card .calc-line{font-family:'IBM Plex Mono',monospace;font-size:1.02rem;margin-top:.45rem}
+.num-card p{font-size:.92rem;color:var(--ink-soft);margin-top:.35rem}
+figure.shot{border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
+figure.shot img{width:100%}
+figure.shot figcaption{font-size:.85rem;color:var(--ink-soft);padding:.7rem 1rem;border-top:1px solid var(--line)}
+figure.shot figcaption b{color:var(--ink)}
+
+/* kit: hojas */
+.kit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:2.6rem;align-items:start}
+.kit-side{position:sticky;top:5.2rem}
+.legend{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.2rem;font-size:.9rem;font-weight:600}
+.legend span{display:flex;gap:.45rem;align-items:center}
+.sw{width:1rem;height:1rem;border-radius:4px;border:1.5px solid rgba(0,0,0,.18)}
+.sw.y{background:var(--write-soft);border-color:#D9B93A}.sw.g{background:var(--formula-soft);border-color:#BCD2C2}
+.sheet{border-top:1.5px solid var(--line);padding:1.05rem 0}
+.sheet:last-of-type{border-bottom:1.5px solid var(--line)}
+.sheet h3{font-size:1.08rem;font-weight:800}
+.sheet h3 .tag{font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:600;color:var(--formula);background:var(--formula-soft);padding:.15rem .5rem;border-radius:6px;margin-left:.5rem;vertical-align:2px}
+.sheet p{color:var(--ink-soft);font-size:.96rem;margin-top:.25rem;max-width:36rem}
+.kit-shot{margin-top:1.6rem}
+
+/* guía */
+.guia{background:var(--board);color:var(--chalk)}
+.guia .kicker{color:var(--write)}
+.guia .sub{color:#C6CDBB}
+.guia-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;margin-top:2rem;align-items:start}
+.guia ul{display:grid;gap:.8rem}
+.guia li{list-style:none;display:flex;gap:.7rem;align-items:baseline;font-size:1rem}
+.guia li::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:var(--write);flex:none}
+.guia li b{color:#fff}
+.guia .fact{border:1.5px solid var(--line-dark);border-radius:var(--radius);padding:1.3rem;background:var(--board-2)}
+.guia .fact .big{font-family:'IBM Plex Mono',monospace;font-size:2rem;font-weight:600;color:var(--write)}
+.guia .fact p{color:#C6CDBB;font-size:.95rem;margin-top:.4rem}
+
+/* para quién */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem}
+.who{border:1.5px solid var(--line);border-radius:var(--radius);padding:1.4rem;background:#fff}
+.who h3{font-size:1.05rem;font-weight:800;margin-bottom:.8rem}
+.who ul{display:grid;gap:.55rem}
+.who li{list-style:none;display:flex;gap:.6rem;align-items:baseline;font-size:.97rem}
+.who.yes li::before{content:"✓";color:var(--formula);font-weight:900}
+.who.no li::before{content:"—";color:var(--bad);font-weight:900}
+
+/* artículo SEO */
+article.seo{max-width:46rem}
+article.seo h2{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:900;line-height:1.15}
+article.seo p{margin-top:1rem;color:#2A362E}
+article.seo h3{margin-top:1.8rem;font-size:1.15rem;font-weight:800}
+.formula{background:var(--board);color:var(--chalk);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-top:1.2rem;font-family:'IBM Plex Mono',monospace;font-size:1.02rem;line-height:1.7}
+.formula b{color:var(--write)}
+article.seo ol{margin:1rem 0 0 1.3rem;display:grid;gap:.5rem;color:#2A362E}
+article.seo .ej{background:var(--formula-soft);border:1.5px solid #BCD2C2;border-radius:var(--radius);padding:1.1rem 1.3rem;margin-top:1.2rem}
+article.seo .ej p{margin-top:.3rem}
+
+/* comprar */
+.buy{background:var(--board);color:var(--chalk)}
+.buy-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;align-items:center}
+.buy .kicker{color:var(--write)}
+.buy .sub{color:#C6CDBB}
+.buy ul{display:grid;gap:.55rem;margin-top:1.2rem}
+.buy li{list-style:none;display:flex;gap:.6rem;align-items:baseline}
+.buy li::before{content:"✓";color:var(--write);font-weight:900}
+.buy-card{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:1.6rem;box-shadow:0 18px 44px rgba(0,0,0,.35)}
+.buy-card .price{font-size:2.6rem;font-weight:900;line-height:1}
+.buy-card .price small{font-size:1rem;font-weight:600;color:var(--ink-soft)}
+.buy-card .once{margin-top:.3rem;font-weight:700;color:var(--formula)}
+.buy-card .btn{width:100%;text-align:center;margin-top:1.2rem;font-size:1.05rem}
+.notice{margin-top:1rem;border:1.5px dashed #D9B93A;background:var(--write-soft);border-radius:10px;padding:.85rem 1rem;font-size:.92rem}
+.notice b{display:block;margin-bottom:.2rem}
+.buy-card .fine{margin-top:.9rem;font-size:.83rem;color:var(--ink-soft)}
+
+/* FAQ */
+.faq-list{margin-top:1.8rem;border-top:1.5px solid var(--line)}
+details{border-bottom:1.5px solid var(--line);padding:1rem 0}
+summary{font-weight:700;font-size:1.02rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::after{content:"+";font-weight:900;color:var(--formula);font-size:1.3rem;line-height:1}
+details[open ] summary::after{content:"–"}
+details p{margin-top:.55rem;color:var(--ink-soft);max-width:42rem}
+
+footer{background:var(--board);color:#B9C2B2;padding:2.2rem 0}
+.footer-in{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer .logo{font-size:1.2rem}
+footer p{font-size:.88rem;max-width:34rem}
+
+.reveal{transition:opacity .55s ease,transform .55s ease}
+html.anim .reveal{opacity:0;transform:translateY(14px)}
+html.anim .reveal.on{opacity:1;transform:none}
+
+@media (max-width: 900px){
+  .hero-grid,.ejemplo-grid,.kit-grid,.guia-grid,.buy-grid{grid-template-columns:1fr}
+  .kit-side{position:static}
+  nav{display:none}
+  section{padding:3.2rem 0}
+}
+@media (max-width: 520px){
+  body{font-size:16px}
+  .hero{padding:2.6rem 0 3rem}
+  .who-grid{grid-template-columns:1fr}
+  .calc .out{flex-direction:column}
+  .header-in{gap:.8rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-in">
+    <a class="logo" href="#top"><span class="dot"></span>COSTEA</a>
+    <nav aria-label="Secciones">
+      <a href="#kit">El kit</a>
+      <a href="#guia">La guía</a>
+      <a href="#ejemplo">Ejemplo real</a>
+      <a href="#como-calcular">Cómo se calcula</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn small js-buy" href="#comprar" style="margin-left:auto">Quiero el kit — $14.99</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>¿Sabés cuánto te cuesta <span class="hl">cada plato</span> que vendés?</h1>
+        <p class="lead">La mayoría de las sodas pone los precios a ojo. Este kit hace la cuenta por vos: <strong>cuánto cuesta cada porción en ingredientes, a qué precio venderla sin perder plata y cuántos platos necesitás vender al mes para no quedar en rojo.</strong></p>
+        <ul class="hero-points">
+          <li>Plantilla de Excel con 7 hojas y las fórmulas ya hechas</li>
+          <li>Guía en PDF de 9 páginas, en español simple</li>
+          <li>Precios de ejemplo de Costa Rica, listos para cambiar por los tuyos</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn js-buy" href="#comprar">Quiero el kit</a>
+          <a class="alt" href="#ejemplo">Ver el ejemplo real</a>
+        </div>
+        <p class="price-note"><b>$14.99 pago único</b> · Sin suscripción · Funciona en Excel y Google Sheets</p>
+      </div>
+
+      <div class="calc" aria-label="Calculadora de food cost">
+        <h2>Probá el semáforo de food cost</h2>
+        <p class="sub">Es la misma cuenta que hace la hoja de Precio Sugerido del kit.</p>
+        <div class="field">
+          <label for="costo">Costo en ingredientes de una porción (₡)</label>
+          <input id="costo" type="number" inputmode="decimal" min="0" value="1476">
+        </div>
+        <div class="field">
+          <label for="precio">Precio al que lo vendés hoy (₡)</label>
+          <input id="precio" type="number" inputmode="decimal" min="0" value="4500">
+        </div>
+        <div class="out">
+          <div><div class="k">FOOD COST REAL</div><div class="v" id="fc-out">33%</div></div>
+          <div><div class="k">PRECIO SUGERIDO AL 32%</div><div class="v" id="sug-out">₡4.612</div></div>
+        </div>
+        <div class="semaforo ok" id="semaforo" aria-live="polite">
+          <span class="light"></span><span id="sem-texto">Bien: estás en la zona sana (28% a 35%).</span>
+        </div>
+        <p class="hint">Lo sano en una soda es un food cost de 28% a 35%. Arriba de 42%, el plato está perdiendo plata.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJEMPLO -->
+  <section id="ejemplo">
+    <div class="wrap">
+      <p class="kicker">Ejemplo real del kit</p>
+      <h2 class="title">Un casado, contado ingrediente por ingrediente</h2>
+      <p class="sub">Nada de números inventados: estas cuentas salen de la propia plantilla, con precios de ejemplo de Costa Rica. Al usar el kit, cambiás los precios por los de tu proveedor.</p>
+      <div class="ejemplo-grid">
+        <div class="numbers">
+          <div class="num-card reveal">
+            <h3>Casado <span class="chip ok">🟢 Bien</span></h3>
+            <div class="calc-line">costo ₡1.476 ÷ precio ₡4.500 = 33% de food cost</div>
+            <p>Arroz, frijoles, carne, plátano, ensalada, queso y demás, sumados con su merma. A ₡4.500 el casado deja margen sano.</p>
+          </div>
+          <div class="num-card reveal">
+            <h3>Olla de carne <span class="chip mid">🟡 Revisar</span></h3>
+            <div class="calc-line">costo ₡1.484 ÷ precio ₡4.000 = 37% de food cost</div>
+            <p>El mismo ejercicio destapa el problema: a ₡4.000 esta olla queda corta. La guía te enseña qué ajustar primero: porción, merma o precio.</p>
+          </div>
+          <div class="num-card reveal">
+            <h3>Desayuno típico (gallo pinto) <span class="chip ok">🟢 Bien</span></h3>
+            <div class="calc-line">costo ₡1.026 ÷ precio ₡3.200 = 32% de food cost</div>
+            <p>Justo en el objetivo. Cuando la cuenta da así, sabés que el precio está bien puesto — y por qué.</p>
+          </div>
+        </div>
+        <figure class="shot reveal">
+          <img src="assets/hoja-escandallo.png" alt="Hoja real del kit: costo por plato del casado, ingrediente por ingrediente, con costo total de ₡1.476 por porción" width="770" height="440">
+          <figcaption><b>Hoja «Costo por Plato» del kit.</b> Cada ingrediente con su cantidad neta, su merma y su costo. Las celdas amarillas las llenás vos; las verdes se calculan solas.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- EL KIT -->
+  <section id="kit">
+    <div class="wrap kit-grid">
+      <div class="kit-side">
+        <p class="kicker">El kit</p>
+        <h2 class="title">Una plantilla de Excel con las 7 hojas que una soda necesita</h2>
+        <p class="sub">Sin macros y sin programas raros: un archivo de Excel que abrís, llenás en amarillo y mirás en verde. Las fórmulas vienen protegidas para que no se borren por accidente.</p>
+        <div class="legend">
+          <span><span class="sw y"></span> Amarillo = usted escribe</span>
+          <span><span class="sw g"></span> Verde = se calcula solo</span>
+        </div>
+        <figure class="shot kit-shot reveal">
+          <img src="assets/hoja-precio-sugerido.png" alt="Hoja real del kit: precio sugerido por plato con food cost y semáforo verde, amarillo o rojo" width="845" height="310">
+          <figcaption><b>Hoja «Precio Sugerido».</b> El semáforo dice de una vez si cada precio está bien, hay que revisarlo o está perdiendo plata.</figcaption>
+        </figure>
+      </div>
+      <div>
+        <div class="sheet reveal">
+          <h3>Instrucciones <span class="tag">empezá aquí</span></h3>
+          <p>El paso a paso en español simple: qué llenar primero, cómo leer los colores y cómo funciona la merma. Sin palabras técnicas.</p>
+        </div>
+        <div class="sheet reveal">
+          <h3>Banco de Ingredientes <span class="tag">28 precargados</span></h3>
+          <p>Tu lista de ingredientes con el precio al que comprás. La plantilla calcula sola cuánto cuesta cada gramo, mililitro o unidad. Viene con 28 ingredientes y precios de ejemplo de Costa Rica, y espacio para los tuyos.</p>
+        </div>
+        <div class="sheet reveal">
+          <h3>Costo por Plato (escandallo) <span class="tag">el corazón del kit</span></h3>
+          <p>Armás cada receta ingrediente por ingrediente: cantidad que se usa, merma (lo que se pierde pelando, limpiando, cociendo) y costo. Al final: cuánto cuesta la receta completa y cuánto cuesta cada porción. Trae 3 recetas de ejemplo y espacio para las tuyas.</p>
+        </div>
+        <div class="sheet reveal">
+          <h3>Precio Sugerido <span class="tag">semáforo</span></h3>
+          <p>Con el costo por porción, la hoja propone el precio según el food cost que busqués (32% precargado, editable) y compara con tu precio actual: 🟢 bien, 🟡 revisar, 🔴 perdiendo plata.</p>
+        </div>
+        <div class="sheet reveal">
+          <h3>Punto de Equilibrio <span class="tag">cuánto vender</span></h3>
+          <p>Sumás tus gastos fijos del mes — alquiler, planilla, luz, agua y demás — y la hoja te dice cuántos platos tenés que vender al mes y por día para cubrirlos, y cuál es tu venta mínima.</p>
+        </div>
+        <div class="sheet reveal">
+          <h3>Inventario <span class="tag">alertas</span></h3>
+          <p>Control simple de existencias: lo que entra, lo que sale y lo que queda. Cuando un producto baja del mínimo, la hoja avisa «Reponer» sola.</p>
+        </div>
+        <div class="sheet reveal">
+          <h3>Ventas y Gastos <span class="tag">la ganancia</span></h3>
+          <p>El registro diario de lo que vendés y lo que gastás, por categoría. Al cierre, la cuenta que importa: ventas − gastos = ganancia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LA GUÍA -->
+  <section class="guia" id="guia">
+    <div class="wrap">
+      <p class="kicker">La guía en PDF</p>
+      <h2 class="title">«Cómo ponerle precio a un plato sin perder plata»</h2>
+      <p class="sub">9 páginas que se leen en una sentada y se quedan de consulta. Todos los ejemplos de la guía usan los mismos números reales de la plantilla, para que veás cada cuenta hecha, no solo explicada.</p>
+      <div class="guia-grid">
+        <ul>
+          <li><span><b>Qué es el food cost</b> y por qué es el número que manda en tu cocina.</span></li>
+          <li><span><b>La merma:</b> lo que comprás no es lo que servís, y esa diferencia cuesta plata.</span></li>
+          <li><span><b>Cómo costear una receta</b> con el escandallo, paso a paso con el casado.</span></li>
+          <li><span><b>Del costo al precio:</b> la fórmula, el redondeo a «número bonito» y el semáforo.</span></li>
+          <li><span><b>El punto de equilibrio:</b> cuántos platos al día pagan tus gastos fijos.</span></li>
+          <li><span><b>Qué hacer cuando un plato queda en amarillo o rojo</b> antes de subir el precio.</span></li>
+        </ul>
+        <div class="fact reveal">
+          <div class="big">₡1.025.000</div>
+          <p>Ese es el ejemplo de gastos fijos mensuales de la guía. Con un margen de ₡2.550 por plato, la cuenta da <b style="color:#fff">402 platos al mes — unos 16 al día — solo para empatar</b>. La guía te enseña a hacer esa misma cuenta con tus números.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUIÉN -->
+  <section id="para-quien">
+    <div class="wrap">
+      <p class="kicker">Para quién es</p>
+      <h2 class="title">Hecho para negocios de comida que ponen los precios a ojo</h2>
+      <div class="who-grid">
+        <div class="who yes reveal">
+          <h3>Te sirve si…</h3>
+          <ul>
+            <li>Tenés una soda, fonda, restaurante pequeño o repostería en Costa Rica o en Latinoamérica</li>
+            <li>Pusiste los precios mirando a la competencia o «porque siempre fue así»</li>
+            <li>Vendés todos los días pero a fin de mes la plata no cuadra</li>
+            <li>Querés una cuenta clara sin pagar un sistema mensual ni un contador para esto</li>
+            <li>Usás Excel o Google Sheets, aunque sea lo básico</li>
+          </ul>
+        </div>
+        <div class="who no reveal">
+          <h3>No es para vos si…</h3>
+          <ul>
+            <li>Ya usás un software de costos o un POS que te da el food cost por plato</li>
+            <li>Buscás contabilidad completa, facturación o planillas: esto es solo costos y precios de cocina</li>
+            <li>Tu menú cambia por completo todos los días y no trabajás con recetas repetidas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO / CÓMO SE CALCULA -->
+  <section id="como-calcular">
+    <div class="wrap">
+      <article class="seo">
+        <p class="kicker">Guía rápida y gratis</p>
+        <h2>Cómo calcular el costo de un plato en Costa Rica</h2>
+        <p>El costo de un plato — su <strong>food cost</strong> — es lo que gastás en ingredientes para servirlo, comparado con el precio al que lo vendés. Es el número que decide si tu soda gana o pierde plata en cada venta, y se calcula así:</p>
+        <div class="formula">
+          Costo por porción = suma de (cantidad que se usa × costo de cada ingrediente)<br>
+          <b>Food cost % = costo por porción ÷ precio de venta × 100</b><br>
+          Precio sugerido = costo por porción ÷ food cost objetivo
+        </div>
+        <h3>El paso a paso</h3>
+        <ol>
+          <li><strong>Anotá cuánto comprás y a qué precio.</strong> Por ejemplo, el arroz a ₡1.200 el kilo: cada gramo cuesta ₡1,20.</li>
+          <li><strong>Pesá lo que lleva cada porción.</strong> Si el casado lleva 90 g de arroz, son ₡108 solo de arroz.</li>
+          <li><strong>Sumá la merma.</strong> Lo que se pela, se limpia o se reduce al cocer no llega al plato, pero lo pagaste. Si la carne pierde 10%, necesitás comprar 133 g para servir 120 g.</li>
+          <li><strong>Sumá todos los ingredientes.</strong> Ese total es el costo por porción: en el ejemplo completo del kit, el casado da ₡1.476.</li>
+          <li><strong>Compará con tu precio.</strong> ₡1.476 ÷ ₡4.500 = 33% de food cost.</li>
+        </ol>
+        <h3>¿Cuánto debería dar?</h3>
+        <p>En sodas y restaurantes pequeños, lo sano es un food cost entre <strong>28% y 35%</strong>. Por debajo de 28% conviene revisar si el precio está alto para tu cliente. Entre 36% y 42% el margen queda muy delgado: cualquier alza de ingredientes te pone en pérdida. Arriba de 42%, ese plato está perdiendo plata en cada venta, aunque el local se vea lleno.</p>
+        <div class="ej">
+          <p><strong>El error más común:</strong> poner el precio copiando al negocio de la par o redondeando «a lo que suena bien», sin saber el costo. Dos sodas pueden vender el casado al mismo precio y una ganar y la otra perder, porque compran a precios distintos y sirven porciones distintas.</p>
+        </div>
+        <p>Hacer esta cuenta a mano, plato por plato, toma horas y hay que repetirla cada vez que sube un ingrediente. El kit de COSTEA trae la plantilla con las fórmulas listas — banco de ingredientes, escandallo, precio sugerido con semáforo y punto de equilibrio — más la guía que explica cada paso con ejemplos. <a href="#comprar">Ver el kit completo</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- COMPRAR -->
+  <section class="buy" id="comprar">
+    <div class="wrap buy-grid">
+      <div>
+        <p class="kicker">El kit completo</p>
+        <h2 class="title">Dejá de poner precios a ojo</h2>
+        <p class="sub">Descargás los dos archivos, abrís la plantilla, cambiás los precios de ejemplo por los tuyos y en una tarde sabés cuánto te cuesta cada plato de tu menú.</p>
+        <ul>
+          <li>Plantilla de Excel de 7 hojas, con fórmulas y ejemplos reales</li>
+          <li>Guía PDF de 9 páginas: «Cómo ponerle precio a un plato sin perder plata»</li>
+          <li>Entrega inmediata al pagar: los archivos te llegan al momento</li>
+          <li>Funciona en Excel y en Google Sheets</li>
+        </ul>
+      </div>
+      <div class="buy-card">
+        <div class="price">$14.99 <small>USD</small></div>
+        <p class="once">Pago único. Sin suscripción, sin pagos mensuales.</p>
+        <button class="btn" id="buy-btn" type="button" disabled>Comprar el kit</button>
+        <div class="notice" role="note">
+          <b>La tienda abre esta semana.</b>
+          Estamos activando el pago en línea. En cuanto abra, este botón te lleva directo a la compra por $14.99 pago único. Volvé en estos días: el kit ya está listo.
+        </div>
+        <p class="fine">Al abrir la tienda, el pago será con tarjeta por medio de una plataforma de pago segura, y la entrega de los archivos es automática apenas se confirma el pago.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="preguntas">
+    <div class="wrap">
+      <p class="kicker">Preguntas frecuentes</p>
+      <h2 class="title">Lo que todo el mundo pregunta antes de comprar</h2>
+      <div class="faq-list">
+        <details>
+          <summary>¿Es un pago único o una suscripción?</summary>
+          <p>Es pago único de $14.99. Pagás una vez y los archivos son tuyos para siempre. No hay mensualidades ni renovaciones.</p>
+        </details>
+        <details>
+          <summary>¿Funciona en Google Sheets o solo en Excel?</summary>
+          <p>En los dos. El archivo es un Excel (.xlsx) estándar: se abre en Microsoft Excel y se puede subir a Google Sheets, donde las fórmulas — incluido el buscador de ingredientes y el semáforo — funcionan igual.</p>
+        </details>
+        <details>
+          <summary>¿Cómo recibo el kit después de pagar?</summary>
+          <p>La entrega es inmediata y automática apenas se confirma el pago: descargás la plantilla de Excel y la guía en PDF en el momento, sin esperas ni envíos manuales.</p>
+        </details>
+        <details>
+          <summary>¿Necesito saber mucho de Excel?</summary>
+          <p>No. Si sabés escribir un número en una celda, podés usarlo: usted escribe solo en las celdas amarillas y todo lo demás se calcula solo. La hoja de Instrucciones y la guía explican cada paso en español simple.</p>
+        </details>
+        <details>
+          <summary>¿Los precios de los ingredientes son los de mi zona?</summary>
+          <p>La plantilla trae 28 ingredientes con precios de ejemplo de Costa Rica (2026) para que veás el kit funcionando de una vez. La idea es que los cambiés por los precios que pagás vos: apenas actualizás el banco de ingredientes, todos los costos de tus platos se recalculan solos.</p>
+        </details>
+        <details>
+          <summary>¿Sirve si mi negocio no está en Costa Rica?</summary>
+          <p>Sí. Las fórmulas no dependen del país: cambiás los precios del banco de ingredientes por los de tu mercado y las cuentas salen igual. Los ejemplos y la guía están pensados para sodas y restaurantes pequeños de Latinoamérica.</p>
+        </details>
+        <details>
+          <summary>¿El punto de equilibrio y el inventario vienen incluidos?</summary>
+          <p>Sí, son dos de las 7 hojas de la misma plantilla, sin costo extra: punto de equilibrio con tus gastos fijos, inventario con alertas de reposición y el registro de ventas y gastos del mes.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-in">
+    <a class="logo" href="#top"><span class="dot"></span>COSTEA</a>
+    <p>Kit de Costos y Precios para Sodas y Restaurantes — plantilla de Excel + guía en PDF. $14.99 pago único. Hecho para negocios de comida de Costa Rica y Latinoamérica.</p>
+    <p>© 2026 COSTEA</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   COSTEA — configuración de tienda
+   Cuando la tienda de Lemon Squeezy esté abierta, pegá aquí la
+   URL de checkout y el botón de compra se activa solo.
+   ============================================================ */
+const CHECKOUT_URL = ""; // ← URL de checkout de Lemon Squeezy (pendiente: apertura de tienda)
+
+(function(){
+  // --- Botón de compra ---
+  var btn = document.getElementById('buy-btn');
+  if (CHECKOUT_URL && btn) {
+    var a = document.createElement('a');
+    a.className = 'btn'; a.href = CHECKOUT_URL; a.textContent = 'Comprar el kit — $14.99';
+    a.setAttribute('aria-label','Comprar el kit de costos por $14.99 pago único');
+    btn.replaceWith(a);
+  }
+  document.querySelectorAll('.js-buy').forEach(function(el){
+    if (CHECKOUT_URL) { el.setAttribute('href', CHECKOUT_URL); }
+  });
+
+  // --- Calculadora de food cost (la misma cuenta de la hoja Precio Sugerido) ---
+  var costo = document.getElementById('costo'),
+      precio = document.getElementById('precio'),
+      fcOut = document.getElementById('fc-out'),
+      sugOut = document.getElementById('sug-out'),
+      sem = document.getElementById('semaforo'),
+      semTexto = document.getElementById('sem-texto');
+  function colon(n){ return '₡' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function calcular(){
+    var c = parseFloat(costo.value), p = parseFloat(precio.value);
+    if (!(c > 0)) { fcOut.textContent = '—'; sugOut.textContent = '—'; return; }
+    sugOut.textContent = colon(c / 0.32);
+    if (!(p > 0)) { fcOut.textContent = '—'; sem.className = 'semaforo mid'; semTexto.textContent = 'Escribí el precio al que lo vendés para ver el semáforo.'; return; }
+    var fc = c / p * 100;
+    fcOut.textContent = (Math.round(fc * 10) / 10).toString().replace('.', ',') + '%';
+    if (fc <= 35) { sem.className = 'semaforo ok'; semTexto.textContent = 'Bien: estás en la zona sana (28% a 35%).'; }
+    else if (fc <= 42) { sem.className = 'semaforo mid'; semTexto.textContent = 'Revisar: el margen quedó delgado. Ajustá porción, merma o precio.'; }
+    else { sem.className = 'semaforo bad'; semTexto.textContent = 'Perdiendo plata: a ese precio, el plato no se paga solo.'; }
+  }
+  [costo, precio].forEach(function(el){ el.addEventListener('input', calcular); });
+  calcular();
+
+  // --- Revelado suave al hacer scroll: el contenido es visible por defecto;
+  //         solo se oculta si el navegador soporta la animación (mejora progresiva) ---
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('anim');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
