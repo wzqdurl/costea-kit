@@ -8,7 +8,9 @@
 <meta property="og:title" content="COSTEA — Kit de Costos y Precios para Sodas y Restaurantes">
 <meta property="og:description" content="Calculá el costo real de cada plato y ponéle precio sin perder plata. Excel + guía PDF, pago único $14.99.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/hoja-precio-sugerido.png">
+<meta property="og:url" content="https://wzqdurl.github.io/costea-kit/">
+<meta property="og:image" content="https://wzqdurl.github.io/costea-kit/assets/hoja-precio-sugerido.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E2B20'/%3E%3Crect x='13' y='24' width='17' height='17' rx='4.5' fill='%23F2B705'/%3E%3Crect x='37' y='24' width='13' height='17' rx='4.5' fill='%23F2F0E6'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"Kit de Costos y Precios para Sodas y Restaurantes","brand":{"@type":"Brand","name":"COSTEA"},"description":"Plantilla de Excel de 7 hojas con fórmulas y guía PDF de 9 páginas para calcular costos por plato, precios sugeridos con food cost, punto de equilibrio, inventario y registro de ventas y gastos.","offers":{"@type":"Offer","price":"14.99","priceCurrency":"USD","availability":"https://schema.org/PreOrder"}}
 </script>
@@ -29,7 +31,13 @@ html{scroll-behavior:smooth}
 body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:var(--formula)}
-:focus-visible{outline:3px solid var(--write);outline-offset:2px}
+/* Foco visible en todo el sistema: verde fórmula sobre fondos claros (la tiza
+   amarilla casi no se ve sobre papel: 1.75:1) y amarillo tiza sobre la pizarra. */
+:focus-visible{outline:3px solid var(--formula);outline-offset:2px}
+header :focus-visible,.hero :focus-visible,.guia :focus-visible,.buy :focus-visible,footer :focus-visible{outline-color:var(--write)}
+.btn:focus-visible{outline-color:var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--write);color:#221A00;font-weight:800;padding:.65rem 1.1rem;border-radius:0 0 10px 0;text-decoration:none}
+.skip:focus{left:0}
 .wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
 .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
 
@@ -39,12 +47,16 @@ header{position:sticky;top:0;z-index:50;background:var(--board);border-bottom:1p
 .logo{font-weight:900;font-size:1.45rem;letter-spacing:.04em;color:var(--chalk);text-decoration:none;display:flex;align-items:center;gap:.5rem}
 .logo .dot{width:.62em;height:.62em;background:var(--write);border-radius:3px;display:inline-block}
 nav{margin-left:auto;display:flex;gap:1.4rem}
-nav a{color:var(--chalk);text-decoration:none;font-size:.95rem;font-weight:500;opacity:.85}
+nav a{color:var(--chalk);text-decoration:none;font-size:.95rem;font-weight:500;opacity:.85;transition:opacity .15s ease}
 nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
 .btn{display:inline-block;background:var(--write);color:#221A00;font-weight:800;text-decoration:none;padding:.8rem 1.5rem;border-radius:10px;border:0;cursor:pointer;font-size:1rem;line-height:1.2;box-shadow:0 2px 0 #B98A04;transition:transform .15s ease, box-shadow .15s ease}
 .btn:hover{transform:translateY(-1px);box-shadow:0 3px 0 #B98A04}
+.btn:active{transform:translateY(1px);box-shadow:0 1px 0 #B98A04}
 .btn.small{padding:.55rem 1rem;font-size:.92rem}
-.btn[disabled]{background:#C9CFC2;color:#5A655C;box-shadow:none;cursor:not-allowed;transform:none}
+/* Deshabilitado con intención de diseño: vale de papel punteado, no un botón roto.
+   Cuando la tienda abra, el JS lo reemplaza por el enlace de compra activo. */
+.btn[disabled]{background:#F7EFCE;color:#7A6410;border:2px dashed #C9A227;box-shadow:none;cursor:not-allowed;transform:none;display:flex;align-items:center;justify-content:center;gap:.55rem}
+.btn[disabled] svg{flex:none}
 
 /* ---------- hero ---------- */
 .hero{background:var(--board);color:var(--chalk);padding:3.8rem 0 4.2rem;position:relative;overflow:hidden}
@@ -68,14 +80,17 @@ nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
 .calc p.sub{font-size:.88rem;color:var(--ink-soft);margin-bottom:1rem}
 .calc label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.3rem}
 .calc .field{margin-bottom:.9rem}
-.calc input{width:100%;font-family:'IBM Plex Mono',monospace;font-size:1.15rem;font-weight:600;padding:.65rem .8rem;border:2px solid #D9B93A;border-radius:8px;background:var(--write-soft);color:var(--ink)}
+.calc input{width:100%;font-family:'IBM Plex Mono',monospace;font-size:1.15rem;font-weight:600;padding:.65rem .8rem;border:2px solid #D9B93A;border-radius:8px;background:var(--write-soft);color:var(--ink);transition:border-color .15s ease}
+.calc input:hover{border-color:#B98A04}
 .calc input:focus{outline:3px solid rgba(30,122,70,.45);outline-offset:1px}
 .calc .out{display:flex;gap:.8rem;margin-top:1rem}
 .calc .out > div{flex:1;background:var(--formula-soft);border:1.5px solid #BCD2C2;border-radius:8px;padding:.6rem .8rem}
 .calc .out .k{font-size:.72rem;font-weight:700;color:var(--formula);letter-spacing:.02em}
 .calc .out .v{font-family:'IBM Plex Mono',monospace;font-size:1.3rem;font-weight:600}
 .semaforo{margin-top:.9rem;display:flex;align-items:center;gap:.65rem;font-weight:700;font-size:1rem;padding:.65rem .8rem;border-radius:8px;border:1.5px solid var(--line)}
-.semaforo .light{width:1.05rem;height:1.05rem;border-radius:50%;flex:none}
+/* La luz del semáforo: mismo componente que los puntos de las tarjetas y del texto
+   (círculo de color con borde oscuro y brillo interior), nunca un emoji. */
+.semaforo .light{width:1.05rem;height:1.05rem;border-radius:50%;flex:none;border:2px solid rgba(0,0,0,.30);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35),0 1px 2px rgba(0,0,0,.18)}
 .semaforo.ok{background:#EAF4EC;border-color:#BCD2C2}.semaforo.ok .light{background:#35A257}
 .semaforo.mid{background:#FDF3D3;border-color:#E5CE7E}.semaforo.mid .light{background:#E5A90C}
 .semaforo.bad{background:#FADBD6;border-color:#E5A79C}.semaforo.bad .light{background:var(--bad)}
@@ -84,7 +99,7 @@ nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
 /* ---------- sections ---------- */
 section{padding:4.2rem 0}
 section + section{border-top:1px solid var(--line)}
-.kicker{font-weight:800;font-size:.85rem;color:var(--formula);margin-bottom:.5rem}
+.kicker{font-weight:800;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:var(--formula);margin-bottom:.5rem}
 h2.title{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:900;line-height:1.15;letter-spacing:-.01em;max-width:22em}
 .sub{margin-top:.8rem;color:var(--ink-soft);max-width:40rem}
 
@@ -93,9 +108,15 @@ h2.title{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:900;line-height:1.15;l
 .numbers{display:grid;gap:1rem}
 .num-card{border:1.5px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.2rem;background:#fff}
 .num-card h3{font-size:1rem;font-weight:800;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.chip{font-size:.8rem;font-weight:800;padding:.28rem .6rem;border-radius:999px;white-space:nowrap}
+.chip{font-size:.8rem;font-weight:800;padding:.28rem .6rem;border-radius:999px;white-space:nowrap;display:inline-flex;align-items:center;gap:.42rem}
+.chip .ind,.dotp{border-radius:50%;border:2px solid rgba(0,0,0,.28);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);flex:none}
+.chip .ind{width:.66rem;height:.66rem}
+.dotp{display:inline-block;width:.6em;height:.6em;vertical-align:-.04em}
 .chip.ok{background:#EAF4EC;color:#1E7A46;border:1.5px solid #BCD2C2}
 .chip.mid{background:#FDF3D3;color:#8A6104;border:1.5px solid #E5CE7E}
+.chip.ok .ind,.dotp.ok{background:#35A257}
+.chip.mid .ind,.dotp.mid{background:#E5A90C}
+.dotp.bad{background:var(--bad)}
 .num-card .calc-line{font-family:'IBM Plex Mono',monospace;font-size:1.02rem;margin-top:.45rem}
 .num-card p{font-size:.92rem;color:var(--ink-soft);margin-top:.35rem}
 figure.shot{border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
@@ -135,9 +156,11 @@ figure.shot figcaption b{color:var(--ink)}
 .who{border:1.5px solid var(--line);border-radius:var(--radius);padding:1.4rem;background:#fff}
 .who h3{font-size:1.05rem;font-weight:800;margin-bottom:.8rem}
 .who ul{display:grid;gap:.55rem}
-.who li{list-style:none;display:flex;gap:.6rem;align-items:baseline;font-size:.97rem}
-.who.yes li::before{content:"✓";color:var(--formula);font-weight:900}
-.who.no li::before{content:"—";color:var(--bad);font-weight:900}
+.who li{list-style:none;display:flex;gap:.6rem;align-items:flex-start;font-size:.97rem}
+/* Marcas de lista con iconos SVG propios (Lucide): check y menos, no glyphs de fuente. */
+.who li::before{content:"";width:1.02em;height:1.02em;flex:none;margin-top:.3em;background-repeat:no-repeat;background-position:center;background-size:contain}
+.who.yes li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E7A46' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
+.who.no li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BE3A2B' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E")}
 
 /* artículo SEO */
 article.seo{max-width:46rem}
@@ -156,13 +179,14 @@ article.seo .ej p{margin-top:.3rem}
 .buy .kicker{color:var(--write)}
 .buy .sub{color:#C6CDBB}
 .buy ul{display:grid;gap:.55rem;margin-top:1.2rem}
-.buy li{list-style:none;display:flex;gap:.6rem;align-items:baseline}
-.buy li::before{content:"✓";color:var(--write);font-weight:900}
+.buy li{list-style:none;display:flex;gap:.6rem;align-items:flex-start}
+.buy li::before{content:"";width:1.02em;height:1.02em;flex:none;margin-top:.3em;background-repeat:no-repeat;background-position:center;background-size:contain;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F2B705' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
 .buy-card{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:1.6rem;box-shadow:0 18px 44px rgba(0,0,0,.35)}
 .buy-card .price{font-size:2.6rem;font-weight:900;line-height:1}
 .buy-card .price small{font-size:1rem;font-weight:600;color:var(--ink-soft)}
 .buy-card .once{margin-top:.3rem;font-weight:700;color:var(--formula)}
 .buy-card .btn{width:100%;text-align:center;margin-top:1.2rem;font-size:1.05rem}
+.buy-card a.btn{display:flex;align-items:center;justify-content:center}
 .notice{margin-top:1rem;border:1.5px dashed #D9B93A;background:var(--write-soft);border-radius:10px;padding:.85rem 1rem;font-size:.92rem}
 .notice b{display:block;margin-bottom:.2rem}
 .buy-card .fine{margin-top:.9rem;font-size:.83rem;color:var(--ink-soft)}
@@ -170,9 +194,10 @@ article.seo .ej p{margin-top:.3rem}
 /* FAQ */
 .faq-list{margin-top:1.8rem;border-top:1.5px solid var(--line)}
 details{border-bottom:1.5px solid var(--line);padding:1rem 0}
-summary{font-weight:700;font-size:1.02rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
-summary::after{content:"+";font-weight:900;color:var(--formula);font-size:1.3rem;line-height:1}
-details[open ] summary::after{content:"–"}
+summary{font-weight:700;font-size:1.02rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .15s ease}
+summary:hover{color:var(--formula)}
+summary::after{content:"";width:1.05rem;height:1.05rem;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E7A46' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .25s ease}
+details[open ] summary::after{transform:rotate(180deg)}
 details p{margin-top:.55rem;color:var(--ink-soft);max-width:42rem}
 
 footer{background:var(--board);color:#B9C2B2;padding:2.2rem 0}
@@ -183,6 +208,10 @@ footer p{font-size:.88rem;max-width:34rem}
 .reveal{transition:opacity .55s ease,transform .55s ease}
 html.anim .reveal{opacity:0;transform:translateY(14px)}
 html.anim .reveal.on{opacity:1;transform:none}
+@media print{
+  header{position:static}
+  html.anim .reveal{opacity:1!important;transform:none!important}
+}
 
 @media (max-width: 900px){
   .hero-grid,.ejemplo-grid,.kit-grid,.guia-grid,.buy-grid{grid-template-columns:1fr}
@@ -200,6 +229,7 @@ html.anim .reveal.on{opacity:1;transform:none}
 </style>
 </head>
 <body>
+<a class="skip" href="#top">Saltar al contenido</a>
 
 <header>
   <div class="wrap header-in">
@@ -215,7 +245,7 @@ html.anim .reveal.on{opacity:1;transform:none}
   </div>
 </header>
 
-<main id="top">
+<main id="top" tabindex="-1">
 
   <!-- HERO -->
   <div class="hero">
@@ -240,20 +270,20 @@ html.anim .reveal.on{opacity:1;transform:none}
         <p class="sub">Es la misma cuenta que hace la hoja de Precio Sugerido del kit.</p>
         <div class="field">
           <label for="costo">Costo en ingredientes de una porción (₡)</label>
-          <input id="costo" type="number" inputmode="decimal" min="0" value="1476">
+          <input id="costo" type="number" inputmode="decimal" min="0" value="1476" aria-describedby="calc-hint">
         </div>
         <div class="field">
           <label for="precio">Precio al que lo vendés hoy (₡)</label>
-          <input id="precio" type="number" inputmode="decimal" min="0" value="4500">
+          <input id="precio" type="number" inputmode="decimal" min="0" value="4500" aria-describedby="calc-hint">
         </div>
         <div class="out">
           <div><div class="k">FOOD COST REAL</div><div class="v" id="fc-out">33%</div></div>
           <div><div class="k">PRECIO SUGERIDO AL 32%</div><div class="v" id="sug-out">₡4.612</div></div>
         </div>
-        <div class="semaforo ok" id="semaforo" aria-live="polite">
-          <span class="light"></span><span id="sem-texto">Bien: estás en la zona sana (28% a 35%).</span>
+        <div class="semaforo ok" id="semaforo" aria-live="polite" aria-atomic="true">
+          <span class="light" aria-hidden="true"></span><span id="sem-texto">Bien: estás en la zona sana (28% a 35%).</span>
         </div>
-        <p class="hint">Lo sano en una soda es un food cost de 28% a 35%. Arriba de 42%, el plato está perdiendo plata.</p>
+        <p class="hint" id="calc-hint">Lo sano en una soda es un food cost de 28% a 35%. Arriba de 42%, el plato está perdiendo plata.</p>
       </div>
     </div>
   </div>
@@ -267,17 +297,17 @@ html.anim .reveal.on{opacity:1;transform:none}
       <div class="ejemplo-grid">
         <div class="numbers">
           <div class="num-card reveal">
-            <h3>Casado <span class="chip ok">🟢 Bien</span></h3>
+            <h3>Casado <span class="chip ok"><span class="ind" aria-hidden="true"></span>Bien</span></h3>
             <div class="calc-line">costo ₡1.476 ÷ precio ₡4.500 = 33% de food cost</div>
             <p>Arroz, frijoles, carne, plátano, ensalada, queso y demás, sumados con su merma. A ₡4.500 el casado deja margen sano.</p>
           </div>
           <div class="num-card reveal">
-            <h3>Olla de carne <span class="chip mid">🟡 Revisar</span></h3>
+            <h3>Olla de carne <span class="chip mid"><span class="ind" aria-hidden="true"></span>Revisar</span></h3>
             <div class="calc-line">costo ₡1.484 ÷ precio ₡4.000 = 37% de food cost</div>
             <p>El mismo ejercicio destapa el problema: a ₡4.000 esta olla queda corta. La guía te enseña qué ajustar primero: porción, merma o precio.</p>
           </div>
           <div class="num-card reveal">
-            <h3>Desayuno típico (gallo pinto) <span class="chip ok">🟢 Bien</span></h3>
+            <h3>Desayuno típico (gallo pinto) <span class="chip ok"><span class="ind" aria-hidden="true"></span>Bien</span></h3>
             <div class="calc-line">costo ₡1.026 ÷ precio ₡3.200 = 32% de food cost</div>
             <p>Justo en el objetivo. Cuando la cuenta da así, sabés que el precio está bien puesto — y por qué.</p>
           </div>
@@ -321,7 +351,7 @@ html.anim .reveal.on{opacity:1;transform:none}
         </div>
         <div class="sheet reveal">
           <h3>Precio Sugerido <span class="tag">semáforo</span></h3>
-          <p>Con el costo por porción, la hoja propone el precio según el food cost que busqués (32% precargado, editable) y compara con tu precio actual: 🟢 bien, 🟡 revisar, 🔴 perdiendo plata.</p>
+          <p>Con el costo por porción, la hoja propone el precio según el food cost que busqués (32% precargado, editable) y compara con tu precio actual: <span class="dotp ok" aria-hidden="true"></span> bien, <span class="dotp mid" aria-hidden="true"></span> revisar, <span class="dotp bad" aria-hidden="true"></span> perdiendo plata.</p>
         </div>
         <div class="sheet reveal">
           <h3>Punto de Equilibrio <span class="tag">cuánto vender</span></h3>
@@ -437,7 +467,7 @@ html.anim .reveal.on{opacity:1;transform:none}
       <div class="buy-card">
         <div class="price">$14.99 <small>USD</small></div>
         <p class="once">Pago único. Sin suscripción, sin pagos mensuales.</p>
-        <button class="btn" id="buy-btn" type="button" disabled>Comprar el kit</button>
+        <button class="btn" id="buy-btn" type="button" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg>Comprar el kit</button>
         <div class="notice" role="note">
           <b>La tienda abre esta semana.</b>
           Estamos activando el pago en línea. En cuanto abra, este botón te lleva directo a la compra por $14.99 pago único. Volvé en estos días: el kit ya está listo.
