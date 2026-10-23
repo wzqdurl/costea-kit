@@ -10,199 +10,264 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://wzqdurl.github.io/costea-kit/">
 <meta property="og:image" content="https://wzqdurl.github.io/costea-kit/assets/hoja-precio-sugerido.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E2B20'/%3E%3Crect x='13' y='24' width='17' height='17' rx='4.5' fill='%23F2B705'/%3E%3Crect x='37' y='24' width='13' height='17' rx='4.5' fill='%23F2F0E6'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23211D14'/%3E%3Crect x='9' y='9' width='46' height='46' rx='4' fill='none' stroke='%23F7F1E3' stroke-width='3'/%3E%3Ccircle cx='32' cy='40' r='6' fill='%23A93420'/%3E%3Crect x='20' y='20' width='24' height='4' fill='%23F7F1E3'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"Kit de Costos y Precios para Sodas y Restaurantes","brand":{"@type":"Brand","name":"COSTEA"},"description":"Plantilla de Excel de 7 hojas con fórmulas y guía PDF de 9 páginas para calcular costos por plato, precios sugeridos con food cost, punto de equilibrio, inventario y registro de ventas y gastos.","offers":{"@type":"Offer","price":"14.99","priceCurrency":"USD","availability":"https://schema.org/PreOrder"}}
 </script>
 <link rel="stylesheet" href="assets/fonts.css">
 <style>
+/* ============================================================
+   COSTEA — «El libro de cuentas»
+   Papel crema, renglones de libro mayor, tinta verde de fórmula,
+   tinta roja de anotación, cifras tabulares como protagonistas.
+   ============================================================ */
 :root{
-  --board:#0E2B20; --board-2:#123527; --chalk:#F2F0E6;
-  --paper:#FBFBF7; --ink:#182420; --ink-soft:#46544C;
-  --write:#F2B705; --write-soft:#FDF3D3;
-  --formula:#1E7A46; --formula-soft:#E4EFE7;
-  --warn:#C77F0A; --bad:#BE3A2B;
-  --line:#DBDED2; --line-dark:#2A4A3B;
-  --radius:14px;
+  --paper:#F7F1E3;        /* papel del libro */
+  --paper-2:#FDFAF1;      /* hoja suelta / folio */
+  --paper-3:#EFE6CF;      /* papel más cargado, bandas y hovers */
+  --ink:#211D14;          /* tinta ferrogálica */
+  --ink-2:#4E4736;        /* texto secundario */
+  --ink-3:#6E6450;        /* pies y notas (5.18:1 sobre papel) */
+  --rule:#DCD2B6;         /* renglón suave */
+  --rule-2:#B4A67F;       /* renglón fuerte */
+  --rojo:#A93420;         /* tinta roja: pérdidas, anotaciones, sello */
+  --rojo-osc:#8C2A17;     /* rojo para texto pequeño */
+  --verde:#1C6B3C;        /* tinta verde: fórmulas, zona sana */
+  --verde-bg:#E9EFE0;
+  --ambar-bg:#F6EBC8; --ambar-tx:#7A5410;
+  --rojo-bg:#F7E3DA;
+  --tinta:#17251C;        /* tapa del libro (sección guía) */
+  --crema:#F3EDDA;        /* texto sobre la tapa */
+  --crema-2:#CFC7AB;      /* texto secundario sobre la tapa */
+  --oro:#D9A92C;          /* dorado de la tapa, solo sobre oscuro */
+  --radius:4px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
 body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
-a{color:var(--formula)}
-/* Foco visible en todo el sistema: verde fórmula sobre fondos claros (la tiza
-   amarilla casi no se ve sobre papel: 1.75:1) y amarillo tiza sobre la pizarra. */
-:focus-visible{outline:3px solid var(--formula);outline-offset:2px}
-header :focus-visible,.hero :focus-visible,.guia :focus-visible,.buy :focus-visible,footer :focus-visible{outline-color:var(--write)}
-.btn:focus-visible{outline-color:var(--ink)}
-.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--write);color:#221A00;font-weight:800;padding:.65rem 1.1rem;border-radius:0 0 10px 0;text-decoration:none}
-.skip:focus{left:0}
-.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+a{color:var(--verde)}
+.serif{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto}
 .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
 
-/* ---------- header ---------- */
-header{position:sticky;top:0;z-index:50;background:var(--board);border-bottom:1px solid var(--line-dark)}
-.header-in{display:flex;align-items:center;gap:1.5rem;padding:.7rem 0}
-.logo{font-weight:900;font-size:1.45rem;letter-spacing:.04em;color:var(--chalk);text-decoration:none;display:flex;align-items:center;gap:.5rem}
-.logo .dot{width:.62em;height:.62em;background:var(--write);border-radius:3px;display:inline-block}
-nav{margin-left:auto;display:flex;gap:1.4rem}
-nav a{color:var(--chalk);text-decoration:none;font-size:.95rem;font-weight:500;opacity:.85;transition:opacity .15s ease}
-nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
-.btn{display:inline-block;background:var(--write);color:#221A00;font-weight:800;text-decoration:none;padding:.8rem 1.5rem;border-radius:10px;border:0;cursor:pointer;font-size:1rem;line-height:1.2;box-shadow:0 2px 0 #B98A04;transition:transform .15s ease, box-shadow .15s ease}
-.btn:hover{transform:translateY(-1px);box-shadow:0 3px 0 #B98A04}
-.btn:active{transform:translateY(1px);box-shadow:0 1px 0 #B98A04}
-.btn.small{padding:.55rem 1rem;font-size:.92rem}
-/* Deshabilitado con intención de diseño: vale de papel punteado, no un botón roto.
-   Cuando la tienda abra, el JS lo reemplaza por el enlace de compra activo. */
-.btn[disabled]{background:#F7EFCE;color:#7A6410;border:2px dashed #C9A227;box-shadow:none;cursor:not-allowed;transform:none;display:flex;align-items:center;justify-content:center;gap:.55rem}
+/* Foco visible por contexto: verde tinta sobre papel (5.79:1),
+   dorado sobre la tapa oscura y el pie (7.33:1). */
+:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
+.guia :focus-visible,footer :focus-visible{outline-color:var(--oro)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);font-weight:700;padding:.65rem 1.1rem;border-radius:0 0 var(--radius) 0;text-decoration:none}
+.skip:focus{left:0}
+.wrap{width:min(1240px,100% - 3rem);margin-inline:auto}
+
+/* ---------- piezas del sistema ---------- */
+/* Línea de partida con puntos guía, como en todo libro de cuentas */
+.leader{display:flex;align-items:baseline;gap:.6rem}
+.leader .dots{flex:1;min-width:1.6rem;border-bottom:2px dotted var(--rule-2);transform:translateY(-.3em)}
+/* Encabezado de folio: número, título y renglón */
+.folio-head{display:flex;align-items:baseline;gap:1.1rem;margin-bottom:1.6rem}
+.folio-head .no{font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--rojo);white-space:nowrap}
+.folio-head .ln{flex:1;border-top:1px solid var(--ink);transform:translateY(-.35em)}
+.folio-head .pg{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ink-3);white-space:nowrap}
+h2.title{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(2.05rem,4.4vw,3.35rem);line-height:1.06;letter-spacing:-.015em;max-width:20em}
+h2.title em{font-style:italic;color:var(--rojo)}
+.sub{margin-top:.9rem;color:var(--ink-2);max-width:38rem;font-size:1.06rem}
+section{padding:4.6rem 0}
+/* Botón de tinta: negro ferrogálico que pasa a rojo al interactuar */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;background:var(--ink);color:var(--paper);font-weight:700;text-decoration:none;padding:.92rem 1.7rem;border-radius:var(--radius);border:1.5px solid var(--ink);cursor:pointer;font-size:1rem;line-height:1.2;transition:background .18s ease,border-color .18s ease,transform .12s ease}
+.btn:hover{background:var(--rojo-osc);border-color:var(--rojo-osc)}
+.btn:active{transform:translateY(1px)}
+.btn.small{padding:.6rem 1.1rem;font-size:.92rem}
+/* Estado de compra deshabilitado DENTRO del sistema: asiento en lápiz,
+   borde punteado de tinta — se lee «todavía no se asienta», no roto. */
+.btn[disabled]{background:transparent;color:var(--ink-2);border:2px dashed var(--ink-3);cursor:not-allowed;transform:none}
+.btn[disabled]:hover{background:transparent;border-color:var(--ink-3)}
 .btn[disabled] svg{flex:none}
+/* Sello de tinta roja */
+.stamp{display:inline-block;font-family:'IBM Plex Mono',monospace;font-weight:600;text-transform:uppercase;letter-spacing:.13em;font-size:.8rem;line-height:1.45;text-align:center;color:var(--rojo);border:2.5px solid var(--rojo);border-radius:var(--radius);padding:.55rem .85rem;box-shadow:inset 0 0 0 2px var(--paper-2),inset 0 0 0 4px rgba(169,52,32,.75);transform:rotate(-7deg);opacity:.94}
+@keyframes stamp-in{0%{opacity:0;transform:rotate(-7deg) scale(1.65)}55%{opacity:1}100%{opacity:.94;transform:rotate(-7deg) scale(1)}}
+html.anim .stamp{opacity:0}
+html.anim .stamp.hit{animation:stamp-in .45s cubic-bezier(.25,1.4,.4,1) forwards}
+/* Anotación al margen, en tinta roja e itálica serif */
+.margin-note{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:560;color:var(--rojo);font-size:1.12rem;transform:rotate(-2.5deg)}
+/* Lámina: la captura como hoja pegada al libro */
+figure.plate{background:var(--paper-2);border:1.5px solid var(--ink);padding:.7rem .7rem 0;box-shadow:7px 7px 0 rgba(33,29,20,.10)}
+figure.plate img{width:100%;border:1px solid var(--rule)}
+figure.plate figcaption{font-size:.9rem;color:var(--ink-2);padding:.75rem .3rem .85rem;border-top:2.5px solid var(--rojo);margin-top:.7rem}
+figure.plate figcaption .lam{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.12em;color:var(--rojo);display:block;margin-bottom:.25rem}
+figure.plate figcaption b{color:var(--ink)}
 
-/* ---------- hero ---------- */
-.hero{background:var(--board);color:var(--chalk);padding:3.8rem 0 4.2rem;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;inset:auto -10% -55% -10%;height:60%;background:radial-gradient(ellipse at center,rgba(242,183,5,.13),transparent 65%);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;position:relative;z-index:1}
-.hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:900;line-height:1.08;letter-spacing:-.01em}
-.hero h1 .hl{background:linear-gradient(transparent 62%,rgba(242,183,5,.55) 62%);padding:0 .06em}
-.hero .lead{margin-top:1.2rem;font-size:1.13rem;color:#D9DCCB;max-width:34rem}
-.hero .lead strong{color:#fff}
-.hero-points{margin-top:1.4rem;display:grid;gap:.45rem;font-size:1rem}
-.hero-points li{list-style:none;display:flex;gap:.6rem;align-items:baseline}
-.hero-points li::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:var(--formula);flex:none;transform:translateY(-1px)}
-.hero-cta{margin-top:1.8rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-.hero-cta .alt{color:var(--chalk);font-weight:600;text-decoration:underline;text-underline-offset:4px}
-.price-note{margin-top:.9rem;font-size:.9rem;color:#B9C2B2}
-.price-note b{color:var(--write);font-size:1.02rem}
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--ink);box-shadow:0 3px 0 -1px var(--paper),0 4px 0 0 var(--ink)}
+.header-in{display:flex;align-items:center;gap:1.6rem;padding:.72rem 0}
+.logo{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.5rem;letter-spacing:.015em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.logo .dot{width:.55em;height:.55em;background:var(--rojo);border-radius:2px;display:inline-block;transform:rotate(45deg)}
+nav{margin-left:auto;display:flex;gap:1.5rem}
+nav a{color:var(--ink-2);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 0;transition:color .15s ease}
+nav a:hover{color:var(--rojo-osc);text-decoration:underline;text-underline-offset:5px}
 
-/* calculator card = mini planilla */
-.calc{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:1.4rem 1.4rem 1.2rem;box-shadow:0 18px 44px rgba(0,0,0,.35)}
-.calc h2{font-size:1.02rem;font-weight:800;margin-bottom:.2rem}
-.calc p.sub{font-size:.88rem;color:var(--ink-soft);margin-bottom:1rem}
-.calc label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.3rem}
-.calc .field{margin-bottom:.9rem}
-.calc input{width:100%;font-family:'IBM Plex Mono',monospace;font-size:1.15rem;font-weight:600;padding:.65rem .8rem;border:2px solid #D9B93A;border-radius:8px;background:var(--write-soft);color:var(--ink);transition:border-color .15s ease}
-.calc input:hover{border-color:#B98A04}
-.calc input:focus{outline:3px solid rgba(30,122,70,.45);outline-offset:1px}
-.calc .out{display:flex;gap:.8rem;margin-top:1rem}
-.calc .out > div{flex:1;background:var(--formula-soft);border:1.5px solid #BCD2C2;border-radius:8px;padding:.6rem .8rem}
-.calc .out .k{font-size:.72rem;font-weight:700;color:var(--formula);letter-spacing:.02em}
-.calc .out .v{font-family:'IBM Plex Mono',monospace;font-size:1.3rem;font-weight:600}
-.semaforo{margin-top:.9rem;display:flex;align-items:center;gap:.65rem;font-weight:700;font-size:1rem;padding:.65rem .8rem;border-radius:8px;border:1.5px solid var(--line)}
-/* La luz del semáforo: mismo componente que los puntos de las tarjetas y del texto
-   (círculo de color con borde oscuro y brillo interior), nunca un emoji. */
-.semaforo .light{width:1.05rem;height:1.05rem;border-radius:50%;flex:none;border:2px solid rgba(0,0,0,.30);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35),0 1px 2px rgba(0,0,0,.18)}
-.semaforo.ok{background:#EAF4EC;border-color:#BCD2C2}.semaforo.ok .light{background:#35A257}
-.semaforo.mid{background:#FDF3D3;border-color:#E5CE7E}.semaforo.mid .light{background:#E5A90C}
-.semaforo.bad{background:#FADBD6;border-color:#E5A79C}.semaforo.bad .light{background:var(--bad)}
-.calc .hint{margin-top:.7rem;font-size:.8rem;color:var(--ink-soft)}
+/* ---------- portada / hero ---------- */
+.hero{padding:4.2rem 0 4.8rem;border-bottom:1px solid var(--rule-2)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:3.4rem;align-items:start}
+.hero .kicker{font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--verde);display:flex;align-items:center;gap:.8rem}
+.hero .kicker::after{content:"";width:3.2rem;border-top:2px solid var(--rojo)}
+.hero h1{font-family:'Fraunces',Georgia,serif;font-weight:620;font-size:clamp(2.85rem,6.4vw,5.35rem);line-height:1.02;letter-spacing:-.018em;margin-top:1.3rem}
+.hero h1 em{font-style:italic;font-weight:560;color:var(--rojo)}
+.hero h1 .u{box-shadow:inset 0 -.14em 0 rgba(28,107,60,.35)}
+.hero .lead{margin-top:1.5rem;font-size:1.16rem;line-height:1.6;color:var(--ink-2);max-width:33rem}
+.hero .lead strong{color:var(--ink)}
+.hero-points{margin-top:1.7rem;display:grid;gap:.6rem}
+.hero-points li{list-style:none;display:flex;gap:.65rem;align-items:flex-start;font-size:1.02rem}
+.hero-points li svg{flex:none;margin-top:.28em}
+.hero-cta{margin-top:2rem;display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap}
+.hero-cta .alt{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--rojo);text-decoration-thickness:2px}
+.hero-cta .alt:hover{color:var(--rojo-osc)}
+.price-line{margin-top:2.1rem;max-width:30rem;font-size:1rem}
+.price-line .lbl{color:var(--ink-2)}
+.price-line .amt{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:1.22rem;white-space:nowrap}
+.price-line .amt b{color:var(--rojo-osc)}
+.price-note{margin-top:.55rem;font-size:.9rem;color:var(--ink-3)}
 
-/* ---------- sections ---------- */
-section{padding:4.2rem 0}
-section + section{border-top:1px solid var(--line)}
-.kicker{font-weight:800;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:var(--formula);margin-bottom:.5rem}
-h2.title{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:900;line-height:1.15;letter-spacing:-.01em;max-width:22em}
-.sub{margin-top:.8rem;color:var(--ink-soft);max-width:40rem}
+/* La calculadora como folio del libro: renglones y margen rojo */
+.folio{background:var(--paper-2);border:1.5px solid var(--ink);box-shadow:8px 8px 0 rgba(33,29,20,.12);position:relative}
+.folio::before{content:"";position:absolute;top:0;bottom:0;left:2.6rem;width:1px;background:rgba(169,52,32,.4)}
+.folio-in{padding:1.5rem 1.6rem 1.4rem 4rem;position:relative;background-image:linear-gradient(transparent 33px,rgba(70,90,120,.12) 34px);background-size:100% 34px;background-position:0 12px}
+.folio-top{display:flex;justify-content:space-between;gap:1rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--rule-2);padding-bottom:.6rem}
+.folio-top .r{color:var(--rojo)}
+.calc h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.55rem;line-height:1.12;margin-top:1rem}
+.calc p.sub2{font-size:.92rem;color:var(--ink-2);margin-top:.35rem;max-width:none}
+.calc .field{margin-top:1.05rem}
+.calc label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-bottom:.15rem}
+.calc input{width:100%;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:1.55rem;font-weight:600;text-align:right;padding:.25rem .15rem;border:0;border-bottom:2px solid var(--ink);border-radius:0;background:transparent;color:var(--ink);transition:border-color .15s ease,background .15s ease}
+.calc input:hover{border-color:var(--rojo)}
+.calc input:focus{outline:3px solid rgba(28,107,60,.45);outline-offset:2px;border-color:var(--verde)}
+.calc .out{margin-top:1.4rem;display:grid;gap:.55rem}
+.calc .out .row{display:flex;align-items:baseline;gap:.6rem}
+.calc .out .k{font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2)}
+.calc .out .dots{flex:1;border-bottom:2px dotted var(--rule-2);transform:translateY(-.3em)}
+.calc .out .v{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:1.45rem;font-weight:600}
+.calc .out .v.big{font-family:'Fraunces',Georgia,serif;font-size:2.1rem;font-weight:700}
+.calc .total-rule{border-top:4px double var(--ink);margin-top:.9rem}
+.semaforo{margin-top:1rem;display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:1rem;padding:.7rem .85rem;border:1.5px solid var(--ink);border-radius:var(--radius);transition:background .25s ease,border-color .25s ease}
+.semaforo .light{width:1.05rem;height:1.05rem;border-radius:50%;flex:none;border:2px solid rgba(33,29,20,.45);box-shadow:inset 0 0 0 2px rgba(255,255,255,.4),0 1px 2px rgba(33,29,20,.25)}
+.semaforo.ok{background:var(--verde-bg)}.semaforo.ok .light{background:#2F9E57}
+.semaforo.mid{background:var(--ambar-bg)}.semaforo.mid .light{background:#DFA40C}
+.semaforo.bad{background:var(--rojo-bg)}.semaforo.bad .light{background:var(--rojo)}
+.calc .hint{margin-top:.8rem;font-size:.85rem;color:var(--ink-3)}
 
-/* ejemplo */
-.ejemplo-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:2.6rem;align-items:start;margin-top:2rem}
-.numbers{display:grid;gap:1rem}
-.num-card{border:1.5px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.2rem;background:#fff}
-.num-card h3{font-size:1rem;font-weight:800;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.chip{font-size:.8rem;font-weight:800;padding:.28rem .6rem;border-radius:999px;white-space:nowrap;display:inline-flex;align-items:center;gap:.42rem}
-.chip .ind,.dotp{border-radius:50%;border:2px solid rgba(0,0,0,.28);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);flex:none}
-.chip .ind{width:.66rem;height:.66rem}
-.dotp{display:inline-block;width:.6em;height:.6em;vertical-align:-.04em}
-.chip.ok{background:#EAF4EC;color:#1E7A46;border:1.5px solid #BCD2C2}
-.chip.mid{background:#FDF3D3;color:#8A6104;border:1.5px solid #E5CE7E}
-.chip.ok .ind,.dotp.ok{background:#35A257}
-.chip.mid .ind,.dotp.mid{background:#E5A90C}
-.dotp.bad{background:var(--bad)}
-.num-card .calc-line{font-family:'IBM Plex Mono',monospace;font-size:1.02rem;margin-top:.45rem}
-.num-card p{font-size:.92rem;color:var(--ink-soft);margin-top:.35rem}
-figure.shot{border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
-figure.shot img{width:100%}
-figure.shot figcaption{font-size:.85rem;color:var(--ink-soft);padding:.7rem 1rem;border-top:1px solid var(--line)}
-figure.shot figcaption b{color:var(--ink)}
+/* ---------- ejemplo: asientos del libro ---------- */
+.ejemplo-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:3rem;align-items:start}
+.entry{border-top:1.5px solid var(--ink);padding:1.35rem 0 1.5rem}
+.entry:last-child{border-bottom:1.5px solid var(--ink)}
+.entry-top{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+.entry h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.65rem;line-height:1.1}
+.entry .dots{flex:1;min-width:2rem;border-bottom:2px dotted var(--rule-2);transform:translateY(-.3em)}
+.entry .pct{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:1.75rem;font-weight:600}
+.entry .pct small{font-size:.85rem;color:var(--ink-3)}
+.stamp-chip{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:.32rem .55rem;border:1.8px solid currentColor;border-radius:3px;transform:rotate(-2deg)}
+.stamp-chip.ok{color:var(--verde)}
+.stamp-chip.mid{color:var(--ambar-tx)}
+.entry .calc-line{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:.98rem;color:var(--ink);margin-top:.6rem}
+.entry p{font-size:.97rem;color:var(--ink-2);margin-top:.4rem;max-width:34rem}
+.ejemplo-side{display:grid;gap:1.4rem}
+.ejemplo-side .margin-note{justify-self:end;margin-right:.6rem}
 
-/* kit: hojas */
-.kit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:2.6rem;align-items:start}
-.kit-side{position:sticky;top:5.2rem}
-.legend{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.2rem;font-size:.9rem;font-weight:600}
-.legend span{display:flex;gap:.45rem;align-items:center}
-.sw{width:1rem;height:1rem;border-radius:4px;border:1.5px solid rgba(0,0,0,.18)}
-.sw.y{background:var(--write-soft);border-color:#D9B93A}.sw.g{background:var(--formula-soft);border-color:#BCD2C2}
-.sheet{border-top:1.5px solid var(--line);padding:1.05rem 0}
-.sheet:last-of-type{border-bottom:1.5px solid var(--line)}
-.sheet h3{font-size:1.08rem;font-weight:800}
-.sheet h3 .tag{font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:600;color:var(--formula);background:var(--formula-soft);padding:.15rem .5rem;border-radius:6px;margin-left:.5rem;vertical-align:2px}
-.sheet p{color:var(--ink-soft);font-size:.96rem;margin-top:.25rem;max-width:36rem}
-.kit-shot{margin-top:1.6rem}
+/* ---------- el kit: índice del libro ---------- */
+.kit-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:3rem;align-items:start}
+.kit-side{position:sticky;top:6rem}
+.legend{display:grid;gap:.55rem;margin-top:1.4rem;font-size:.94rem;font-weight:600}
+.legend span{display:flex;gap:.55rem;align-items:center}
+.sw{width:1rem;height:1rem;border-radius:3px;border:1.5px solid rgba(33,29,20,.35);flex:none}
+.sw.y{background:#FDF3D3;border-color:#C9A227}.sw.g{background:var(--verde-bg);border-color:#9DBFA6}
+.kit-shot{margin-top:1.7rem}
+.sheet{display:grid;grid-template-columns:4.2rem 1fr;gap:.4rem 1.1rem;padding:1.15rem .5rem;border-top:1px solid var(--rule-2);transition:background .18s ease}
+.sheet:last-of-type{border-bottom:1px solid var(--rule-2)}
+.sheet:hover{background:var(--paper-3)}
+.sheet .num{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:560;font-size:1.9rem;color:var(--rojo);line-height:1;padding-top:.1rem}
+.sheet h3{font-size:1.1rem;font-weight:800;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.sheet h3 .tag{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--verde);background:var(--verde-bg);padding:.18rem .5rem;border-radius:3px}
+.sheet p{grid-column:2;color:var(--ink-2);font-size:.96rem;max-width:36rem}
+.sheet p .dotp{border-radius:50%;border:1.8px solid rgba(33,29,20,.4);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4);display:inline-block;width:.62em;height:.62em;vertical-align:-.03em}
+.dotp.ok{background:#2F9E57}.dotp.mid{background:#DFA40C}.dotp.bad{background:var(--rojo)}
 
-/* guía */
-.guia{background:var(--board);color:var(--chalk)}
-.guia .kicker{color:var(--write)}
-.guia .sub{color:#C6CDBB}
-.guia-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;margin-top:2rem;align-items:start}
-.guia ul{display:grid;gap:.8rem}
-.guia li{list-style:none;display:flex;gap:.7rem;align-items:baseline;font-size:1rem}
-.guia li::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:var(--write);flex:none}
+/* ---------- la guía: la tapa del libro ---------- */
+.guia{background:var(--tinta);color:var(--crema);box-shadow:inset 0 0 0 10px var(--tinta),inset 0 0 0 11px rgba(217,169,44,.45),inset 0 0 0 13px var(--tinta),inset 0 0 0 14px rgba(217,169,44,.28)}
+.guia .folio-head .no{color:var(--oro)}
+.guia .folio-head .ln{border-top-color:var(--crema)}
+.guia .folio-head .pg{color:var(--crema-2)}
+.guia h2.title{color:var(--crema)}
+.guia h2.title em{color:var(--oro)}
+.guia .sub{color:var(--crema-2)}
+.guia-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;margin-top:2.2rem;align-items:start}
+.guia ul{display:grid;gap:.85rem}
+.guia li{list-style:none;display:flex;gap:.7rem;align-items:baseline;font-size:1.02rem;color:var(--crema)}
+.guia li::before{content:"";width:.52rem;height:.52rem;background:var(--oro);flex:none;transform:translateY(-1px)}
 .guia li b{color:#fff}
-.guia .fact{border:1.5px solid var(--line-dark);border-radius:var(--radius);padding:1.3rem;background:var(--board-2)}
-.guia .fact .big{font-family:'IBM Plex Mono',monospace;font-size:2rem;font-weight:600;color:var(--write)}
-.guia .fact p{color:#C6CDBB;font-size:.95rem;margin-top:.4rem}
+.guia .fact{border-top:4px double var(--oro);border-bottom:1px solid rgba(217,169,44,.4);padding:1.3rem .2rem 1.4rem}
+.guia .fact .big{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:2.3rem;font-weight:600;color:var(--oro)}
+.guia .fact .leader{margin-top:.4rem;font-family:'IBM Plex Mono',monospace;font-size:.95rem;color:var(--crema)}
+.guia .fact .leader .dots{border-bottom-color:rgba(217,169,44,.55)}
+.guia .fact p{color:var(--crema-2);font-size:.97rem;margin-top:.8rem}
+.guia .fact p b{color:var(--crema)}
 
-/* para quién */
-.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem}
-.who{border:1.5px solid var(--line);border-radius:var(--radius);padding:1.4rem;background:#fff}
-.who h3{font-size:1.05rem;font-weight:800;margin-bottom:.8rem}
-.who ul{display:grid;gap:.55rem}
-.who li{list-style:none;display:flex;gap:.6rem;align-items:flex-start;font-size:.97rem}
-/* Marcas de lista con iconos SVG propios (Lucide): check y menos, no glyphs de fuente. */
-.who li::before{content:"";width:1.02em;height:1.02em;flex:none;margin-top:.3em;background-repeat:no-repeat;background-position:center;background-size:contain}
-.who.yes li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E7A46' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
-.who.no li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BE3A2B' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E")}
+/* ---------- para quién ---------- */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:2.2rem;border-top:4px double var(--ink);border-bottom:1px solid var(--rule-2)}
+.who{padding:1.7rem 1.8rem 1.9rem 0}
+.who + .who{border-left:1px solid var(--rule-2);padding-left:1.8rem;padding-right:0}
+.who h3{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.4rem;margin-bottom:1rem}
+.who ul{display:grid;gap:.6rem}
+.who li{list-style:none;display:flex;gap:.6rem;align-items:flex-start;font-size:.99rem;color:var(--ink-2)}
+.who li svg{flex:none;margin-top:.3em}
 
-/* artículo SEO */
-article.seo{max-width:46rem}
-article.seo h2{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:900;line-height:1.15}
-article.seo p{margin-top:1rem;color:#2A362E}
-article.seo h3{margin-top:1.8rem;font-size:1.15rem;font-weight:800}
-.formula{background:var(--board);color:var(--chalk);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-top:1.2rem;font-family:'IBM Plex Mono',monospace;font-size:1.02rem;line-height:1.7}
-.formula b{color:var(--write)}
-article.seo ol{margin:1rem 0 0 1.3rem;display:grid;gap:.5rem;color:#2A362E}
-article.seo .ej{background:var(--formula-soft);border:1.5px solid #BCD2C2;border-radius:var(--radius);padding:1.1rem 1.3rem;margin-top:1.2rem}
-article.seo .ej p{margin-top:.3rem}
+/* ---------- artículo: página editorial ---------- */
+article.seo{max-width:45rem}
+article.seo h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(2.05rem,4.4vw,3.35rem);line-height:1.06;letter-spacing:-.015em}
+article.seo p{margin-top:1.05rem;color:#2E2A1E;font-size:1.05rem;line-height:1.65}
+article.seo p.first::first-letter{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:3.5em;float:left;line-height:.82;padding:.04em .14em 0 0;color:var(--rojo)}
+article.seo h3{margin-top:2rem;font-family:'Fraunces',Georgia,serif;font-size:1.45rem;font-weight:600}
+.formula{margin-top:1.3rem}
+.formula .folio-in{padding:1.2rem 1.3rem 1.2rem 3.4rem;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:.99rem;line-height:34px}
+.formula b{color:var(--verde)}
+article.seo ol{margin:1.1rem 0 0;list-style:none;counter-reset:paso;display:grid;gap:.75rem;color:#2E2A1E;font-size:1.03rem}
+article.seo ol li{counter-increment:paso;display:flex;gap:.9rem;align-items:baseline}
+article.seo ol li::before{content:counter(paso,decimal-leading-zero);font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:560;color:var(--rojo);font-size:1.25rem;flex:none;min-width:2.1rem}
+article.seo .ej{border-left:3.5px solid var(--rojo);background:var(--paper-3);padding:1.05rem 1.25rem;margin-top:1.4rem}
+article.seo .ej p{margin-top:0}
+article.seo .ej .ojo{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--rojo-osc);display:block;margin-bottom:.35rem}
 
-/* comprar */
-.buy{background:var(--board);color:var(--chalk)}
-.buy-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;align-items:center}
-.buy .kicker{color:var(--write)}
-.buy .sub{color:#C6CDBB}
-.buy ul{display:grid;gap:.55rem;margin-top:1.2rem}
-.buy li{list-style:none;display:flex;gap:.6rem;align-items:flex-start}
-.buy li::before{content:"";width:1.02em;height:1.02em;flex:none;margin-top:.3em;background-repeat:no-repeat;background-position:center;background-size:contain;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F2B705' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
-.buy-card{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:1.6rem;box-shadow:0 18px 44px rgba(0,0,0,.35)}
-.buy-card .price{font-size:2.6rem;font-weight:900;line-height:1}
-.buy-card .price small{font-size:1rem;font-weight:600;color:var(--ink-soft)}
-.buy-card .once{margin-top:.3rem;font-weight:700;color:var(--formula)}
-.buy-card .btn{width:100%;text-align:center;margin-top:1.2rem;font-size:1.05rem}
-.buy-card a.btn{display:flex;align-items:center;justify-content:center}
-.notice{margin-top:1rem;border:1.5px dashed #D9B93A;background:var(--write-soft);border-radius:10px;padding:.85rem 1rem;font-size:.92rem}
-.notice b{display:block;margin-bottom:.2rem}
-.buy-card .fine{margin-top:.9rem;font-size:.83rem;color:var(--ink-soft)}
+/* ---------- comprar: cierre de cuentas ---------- */
+.buy-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:3.2rem;align-items:start}
+.buy ul{display:grid;gap:.6rem;margin-top:1.5rem}
+.buy li{list-style:none;display:flex;gap:.6rem;align-items:flex-start;font-size:1rem;color:var(--ink-2)}
+.buy li svg{flex:none;margin-top:.3em}
+.buy-card{position:relative;margin-top:1.5rem}
+.buy-card .folio-in{padding:3.7rem 1.7rem 1.5rem 4rem}
+.buy-card .folio-top{margin-bottom:1.1rem}
+.buy-card .price{font-family:'Fraunces',Georgia,serif;font-size:3.6rem;font-weight:700;line-height:1}
+.buy-card .price small{font-family:'IBM Plex Mono',monospace;font-size:.85rem;font-weight:600;letter-spacing:.1em;color:var(--ink-3)}
+.buy-card .once{margin-top:.45rem;font-weight:700;color:var(--verde)}
+.buy-includes{margin-top:1.3rem;display:grid;gap:.5rem;font-size:.97rem}
+.buy-includes .leader .inc{font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);white-space:nowrap}
+.buy-card .total-rule{border-top:4px double var(--ink);margin-top:1.2rem}
+.buy-card .btn{width:100%;margin-top:1.2rem;font-size:1.05rem}
+.notice{margin-top:1rem;font-size:.94rem;color:var(--ink-2)}
+.notice b{display:block;color:var(--ink);margin-bottom:.2rem}
+.buy-card .fine{margin-top:.9rem;font-size:.84rem;color:var(--ink-3)}
+.buy-card .stamp{position:absolute;top:-1.8rem;right:1.1rem;background:rgba(253,250,241,.65);z-index:2}
 
-/* FAQ */
-.faq-list{margin-top:1.8rem;border-top:1.5px solid var(--line)}
-details{border-bottom:1.5px solid var(--line);padding:1rem 0}
-summary{font-weight:700;font-size:1.02rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .15s ease}
-summary:hover{color:var(--formula)}
-summary::after{content:"";width:1.05rem;height:1.05rem;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E7A46' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .25s ease}
+/* ---------- FAQ: índice de preguntas ---------- */
+.faq-list{margin-top:1.6rem;border-top:1.5px solid var(--ink)}
+details{border-bottom:1px solid var(--rule-2);padding:1.05rem 0}
+summary{font-weight:700;font-size:1.04rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .15s ease}
+summary:hover{color:var(--rojo-osc)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";width:1.05rem;height:1.05rem;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6B3C' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .25s ease}
 details[open ] summary::after{transform:rotate(180deg)}
-details p{margin-top:.55rem;color:var(--ink-soft);max-width:42rem}
+details p{margin-top:.55rem;color:var(--ink-2);max-width:42rem}
 
-footer{background:var(--board);color:#B9C2B2;padding:2.2rem 0}
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#CFC7AB;padding:2.4rem 0}
 .footer-in{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
-footer .logo{font-size:1.2rem}
+footer .logo{color:var(--paper);font-size:1.25rem}
 footer p{font-size:.88rem;max-width:34rem}
 
 .reveal{transition:opacity .55s ease,transform .55s ease}
@@ -211,19 +276,37 @@ html.anim .reveal.on{opacity:1;transform:none}
 @media print{
   header{position:static}
   html.anim .reveal{opacity:1!important;transform:none!important}
+  html.anim .stamp{opacity:.94!important}
 }
 
+@media (max-width: 1080px){
+  .margin-note{display:none}
+}
 @media (max-width: 900px){
   .hero-grid,.ejemplo-grid,.kit-grid,.guia-grid,.buy-grid{grid-template-columns:1fr}
   .kit-side{position:static}
   nav{display:none}
-  section{padding:3.2rem 0}
+  section{padding:3.4rem 0}
+  .hero{padding:3rem 0 3.4rem}
+  .who-grid{grid-template-columns:1fr}
+  .who{padding:1.5rem 0 1.6rem}
+  .who + .who{border-left:0;border-top:1px solid var(--rule-2);padding-left:0}
 }
 @media (max-width: 520px){
   body{font-size:16px}
-  .hero{padding:2.6rem 0 3rem}
-  .who-grid{grid-template-columns:1fr}
-  .calc .out{flex-direction:column}
+  .hero .kicker::after{display:none}
+  .price-line .lbl-long{display:none}
+  .buy-card{margin-top:2rem}
+  .wrap{width:calc(100% - 2.2rem)}
+  .folio-in{padding:1.25rem 1.1rem 1.2rem 2.9rem}
+  .folio::before{left:1.7rem}
+  .formula .folio-in{padding:1.05rem .9rem 1.05rem 2.6rem;font-size:.86rem}
+  .buy-card .folio-in{padding:2.8rem 1.1rem 1.3rem 2.9rem}
+  .buy-card .stamp{top:-1.6rem;right:.4rem;font-size:.68rem}
+  .entry h3{font-size:1.4rem}
+  .entry .pct{font-size:1.45rem}
+  .sheet{grid-template-columns:3rem 1fr}
+  .sheet .num{font-size:1.5rem}
   .header-in{gap:.8rem}
 }
 </style>
@@ -247,133 +330,167 @@ html.anim .reveal.on{opacity:1;transform:none}
 
 <main id="top" tabindex="-1">
 
-  <!-- HERO -->
+  <!-- PORTADA -->
   <div class="hero">
     <div class="wrap hero-grid">
       <div>
-        <h1>¿Sabés cuánto te cuesta <span class="hl">cada plato</span> que vendés?</h1>
+        <p class="kicker">Libro de costos · Para sodas y restaurantes</p>
+        <h1>¿Cuánto te <em>cuesta</em> cada <span class="u">plato</span> que vendés?</h1>
         <p class="lead">La mayoría de las sodas pone los precios a ojo. Este kit hace la cuenta por vos: <strong>cuánto cuesta cada porción en ingredientes, a qué precio venderla sin perder plata y cuántos platos necesitás vender al mes para no quedar en rojo.</strong></p>
         <ul class="hero-points">
-          <li>Plantilla de Excel con 7 hojas y las fórmulas ya hechas</li>
-          <li>Guía en PDF de 9 páginas, en español simple</li>
-          <li>Precios de ejemplo de Costa Rica, listos para cambiar por los tuyos</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Plantilla de Excel con 7 hojas y las fórmulas ya hechas</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Guía en PDF de 9 páginas, en español simple</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Precios de ejemplo de Costa Rica, listos para cambiar por los tuyos</span></li>
         </ul>
         <div class="hero-cta">
           <a class="btn js-buy" href="#comprar">Quiero el kit</a>
           <a class="alt" href="#ejemplo">Ver el ejemplo real</a>
         </div>
-        <p class="price-note"><b>$14.99 pago único</b> · Sin suscripción · Funciona en Excel y Google Sheets</p>
+        <div class="price-line leader">
+          <span class="lbl">Kit completo <span class="lbl-long">— Excel + guía PDF</span></span>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="amt"><b>$14.99</b> pago único</span>
+        </div>
+        <p class="price-note">Sin suscripción · Funciona en Excel y Google Sheets</p>
       </div>
 
-      <div class="calc" aria-label="Calculadora de food cost">
-        <h2>Probá el semáforo de food cost</h2>
-        <p class="sub">Es la misma cuenta que hace la hoja de Precio Sugerido del kit.</p>
-        <div class="field">
-          <label for="costo">Costo en ingredientes de una porción (₡)</label>
-          <input id="costo" type="number" inputmode="decimal" min="0" value="1476" aria-describedby="calc-hint">
+      <div class="folio calc" aria-label="Calculadora de food cost">
+        <div class="folio-in">
+          <div class="folio-top"><span>Partida de prueba</span><span class="r">Food cost</span></div>
+          <h2>Probá el semáforo de food cost</h2>
+          <p class="sub2">Es la misma cuenta que hace la hoja de Precio Sugerido del kit.</p>
+          <div class="field">
+            <label for="costo">Costo en ingredientes de una porción (₡)</label>
+            <input id="costo" type="number" inputmode="decimal" min="0" value="1476" aria-describedby="calc-hint">
+          </div>
+          <div class="field">
+            <label for="precio">Precio al que lo vendés hoy (₡)</label>
+            <input id="precio" type="number" inputmode="decimal" min="0" value="4500" aria-describedby="calc-hint">
+          </div>
+          <div class="out">
+            <div class="row"><span class="k">Food cost real</span><span class="dots" aria-hidden="true"></span><span class="v" id="fc-out">33%</span></div>
+            <div class="row"><span class="k">Precio sugerido al 32%</span><span class="dots" aria-hidden="true"></span><span class="v big" id="sug-out">₡4.612</span></div>
+          </div>
+          <div class="total-rule"></div>
+          <div class="semaforo ok" id="semaforo" aria-live="polite" aria-atomic="true">
+            <span class="light" aria-hidden="true"></span><span id="sem-texto">Bien: estás en la zona sana (28% a 35%).</span>
+          </div>
+          <p class="hint" id="calc-hint">Lo sano en una soda es un food cost de 28% a 35%. Arriba de 42%, el plato está perdiendo plata.</p>
         </div>
-        <div class="field">
-          <label for="precio">Precio al que lo vendés hoy (₡)</label>
-          <input id="precio" type="number" inputmode="decimal" min="0" value="4500" aria-describedby="calc-hint">
-        </div>
-        <div class="out">
-          <div><div class="k">FOOD COST REAL</div><div class="v" id="fc-out">33%</div></div>
-          <div><div class="k">PRECIO SUGERIDO AL 32%</div><div class="v" id="sug-out">₡4.612</div></div>
-        </div>
-        <div class="semaforo ok" id="semaforo" aria-live="polite" aria-atomic="true">
-          <span class="light" aria-hidden="true"></span><span id="sem-texto">Bien: estás en la zona sana (28% a 35%).</span>
-        </div>
-        <p class="hint" id="calc-hint">Lo sano en una soda es un food cost de 28% a 35%. Arriba de 42%, el plato está perdiendo plata.</p>
       </div>
     </div>
   </div>
 
-  <!-- EJEMPLO -->
+  <!-- FOLIO 01 · EJEMPLO -->
   <section id="ejemplo">
     <div class="wrap">
-      <p class="kicker">Ejemplo real del kit</p>
-      <h2 class="title">Un casado, contado ingrediente por ingrediente</h2>
+      <div class="folio-head"><span class="no">FOLIO N.º 01</span><span class="ln" aria-hidden="true"></span><span class="pg">Ejemplo real</span></div>
+      <h2 class="title">Un casado, contado <em>ingrediente por ingrediente</em></h2>
       <p class="sub">Nada de números inventados: estas cuentas salen de la propia plantilla, con precios de ejemplo de Costa Rica. Al usar el kit, cambiás los precios por los de tu proveedor.</p>
-      <div class="ejemplo-grid">
-        <div class="numbers">
-          <div class="num-card reveal">
-            <h3>Casado <span class="chip ok"><span class="ind" aria-hidden="true"></span>Bien</span></h3>
+      <div class="ejemplo-grid" style="margin-top:2.4rem">
+        <div>
+          <div class="entry reveal">
+            <div class="entry-top">
+              <h3>Casado</h3><span class="dots" aria-hidden="true"></span>
+              <span class="pct">33<small>%</small></span>
+              <span class="stamp-chip ok">En zona sana</span>
+            </div>
             <div class="calc-line">costo ₡1.476 ÷ precio ₡4.500 = 33% de food cost</div>
             <p>Arroz, frijoles, carne, plátano, ensalada, queso y demás, sumados con su merma. A ₡4.500 el casado deja margen sano.</p>
           </div>
-          <div class="num-card reveal">
-            <h3>Olla de carne <span class="chip mid"><span class="ind" aria-hidden="true"></span>Revisar</span></h3>
+          <div class="entry reveal">
+            <div class="entry-top">
+              <h3>Olla de carne</h3><span class="dots" aria-hidden="true"></span>
+              <span class="pct">37<small>%</small></span>
+              <span class="stamp-chip mid">A revisar</span>
+            </div>
             <div class="calc-line">costo ₡1.484 ÷ precio ₡4.000 = 37% de food cost</div>
             <p>El mismo ejercicio destapa el problema: a ₡4.000 esta olla queda corta. La guía te enseña qué ajustar primero: porción, merma o precio.</p>
           </div>
-          <div class="num-card reveal">
-            <h3>Desayuno típico (gallo pinto) <span class="chip ok"><span class="ind" aria-hidden="true"></span>Bien</span></h3>
+          <div class="entry reveal">
+            <div class="entry-top">
+              <h3>Desayuno típico <span style="font-size:.62em;font-style:italic;font-weight:560">(gallo pinto)</span></h3><span class="dots" aria-hidden="true"></span>
+              <span class="pct">32<small>%</small></span>
+              <span class="stamp-chip ok">En zona sana</span>
+            </div>
             <div class="calc-line">costo ₡1.026 ÷ precio ₡3.200 = 32% de food cost</div>
             <p>Justo en el objetivo. Cuando la cuenta da así, sabés que el precio está bien puesto — y por qué.</p>
           </div>
         </div>
-        <figure class="shot reveal">
-          <img src="assets/hoja-escandallo.png" alt="Hoja real del kit: costo por plato del casado, ingrediente por ingrediente, con costo total de ₡1.476 por porción" width="770" height="440">
-          <figcaption><b>Hoja «Costo por Plato» del kit.</b> Cada ingrediente con su cantidad neta, su merma y su costo. Las celdas amarillas las llenás vos; las verdes se calculan solas.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- EL KIT -->
-  <section id="kit">
-    <div class="wrap kit-grid">
-      <div class="kit-side">
-        <p class="kicker">El kit</p>
-        <h2 class="title">Una plantilla de Excel con las 7 hojas que una soda necesita</h2>
-        <p class="sub">Sin macros y sin programas raros: un archivo de Excel que abrís, llenás en amarillo y mirás en verde. Las fórmulas vienen protegidas para que no se borren por accidente.</p>
-        <div class="legend">
-          <span><span class="sw y"></span> Amarillo = usted escribe</span>
-          <span><span class="sw g"></span> Verde = se calcula solo</span>
-        </div>
-        <figure class="shot kit-shot reveal">
-          <img src="assets/hoja-precio-sugerido.png" alt="Hoja real del kit: precio sugerido por plato con food cost y semáforo verde, amarillo o rojo" width="845" height="310">
-          <figcaption><b>Hoja «Precio Sugerido».</b> El semáforo dice de una vez si cada precio está bien, hay que revisarlo o está perdiendo plata.</figcaption>
-        </figure>
-      </div>
-      <div>
-        <div class="sheet reveal">
-          <h3>Instrucciones <span class="tag">empezá aquí</span></h3>
-          <p>El paso a paso en español simple: qué llenar primero, cómo leer los colores y cómo funciona la merma. Sin palabras técnicas.</p>
-        </div>
-        <div class="sheet reveal">
-          <h3>Banco de Ingredientes <span class="tag">28 precargados</span></h3>
-          <p>Tu lista de ingredientes con el precio al que comprás. La plantilla calcula sola cuánto cuesta cada gramo, mililitro o unidad. Viene con 28 ingredientes y precios de ejemplo de Costa Rica, y espacio para los tuyos.</p>
-        </div>
-        <div class="sheet reveal">
-          <h3>Costo por Plato (escandallo) <span class="tag">el corazón del kit</span></h3>
-          <p>Armás cada receta ingrediente por ingrediente: cantidad que se usa, merma (lo que se pierde pelando, limpiando, cociendo) y costo. Al final: cuánto cuesta la receta completa y cuánto cuesta cada porción. Trae 3 recetas de ejemplo y espacio para las tuyas.</p>
-        </div>
-        <div class="sheet reveal">
-          <h3>Precio Sugerido <span class="tag">semáforo</span></h3>
-          <p>Con el costo por porción, la hoja propone el precio según el food cost que busqués (32% precargado, editable) y compara con tu precio actual: <span class="dotp ok" aria-hidden="true"></span> bien, <span class="dotp mid" aria-hidden="true"></span> revisar, <span class="dotp bad" aria-hidden="true"></span> perdiendo plata.</p>
-        </div>
-        <div class="sheet reveal">
-          <h3>Punto de Equilibrio <span class="tag">cuánto vender</span></h3>
-          <p>Sumás tus gastos fijos del mes — alquiler, planilla, luz, agua y demás — y la hoja te dice cuántos platos tenés que vender al mes y por día para cubrirlos, y cuál es tu venta mínima.</p>
-        </div>
-        <div class="sheet reveal">
-          <h3>Inventario <span class="tag">alertas</span></h3>
-          <p>Control simple de existencias: lo que entra, lo que sale y lo que queda. Cuando un producto baja del mínimo, la hoja avisa «Reponer» sola.</p>
-        </div>
-        <div class="sheet reveal">
-          <h3>Ventas y Gastos <span class="tag">la ganancia</span></h3>
-          <p>El registro diario de lo que vendés y lo que gastás, por categoría. Al cierre, la cuenta que importa: ventas − gastos = ganancia.</p>
+        <div class="ejemplo-side">
+          <p class="margin-note">Ojo con la olla de carne: el plato que más se vende no siempre es el que más deja.</p>
+          <figure class="plate reveal">
+            <img src="assets/hoja-escandallo.png" alt="Hoja real del kit: costo por plato del casado, ingrediente por ingrediente, con costo total de ₡1.476 por porción" width="770" height="440">
+            <figcaption><span class="lam">LÁMINA I</span><b>Hoja «Costo por Plato» del kit.</b> Cada ingrediente con su cantidad neta, su merma y su costo. Las celdas amarillas las llenás vos; las verdes se calculan solas.</figcaption>
+          </figure>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LA GUÍA -->
+  <!-- FOLIO 02 · EL KIT -->
+  <section id="kit" style="padding-top:0">
+    <div class="wrap">
+      <div class="folio-head"><span class="no">FOLIO N.º 02</span><span class="ln" aria-hidden="true"></span><span class="pg">El kit</span></div>
+      <div class="kit-grid">
+        <div class="kit-side">
+          <h2 class="title">Las 7 hojas de <em>tu libro</em> de cocina</h2>
+          <p class="sub">Una plantilla de Excel con las 7 hojas que una soda necesita. Sin macros y sin programas raros: un archivo que abrís, llenás en amarillo y mirás en verde. Las fórmulas vienen protegidas para que no se borren por accidente.</p>
+          <div class="legend">
+            <span><span class="sw y"></span> Amarillo = usted escribe</span>
+            <span><span class="sw g"></span> Verde = se calcula solo</span>
+          </div>
+          <figure class="plate kit-shot reveal">
+            <img src="assets/hoja-precio-sugerido.png" alt="Hoja real del kit: precio sugerido por plato con food cost y semáforo verde, amarillo o rojo" width="845" height="310">
+            <figcaption><span class="lam">LÁMINA II</span><b>Hoja «Precio Sugerido».</b> El semáforo dice de una vez si cada precio está bien, hay que revisarlo o está perdiendo plata.</figcaption>
+          </figure>
+        </div>
+        <div>
+          <div class="sheet reveal">
+            <span class="num">01</span>
+            <h3>Instrucciones <span class="tag">empezá aquí</span></h3>
+            <p>El paso a paso en español simple: qué llenar primero, cómo leer los colores y cómo funciona la merma. Sin palabras técnicas.</p>
+          </div>
+          <div class="sheet reveal">
+            <span class="num">02</span>
+            <h3>Banco de Ingredientes <span class="tag">28 precargados</span></h3>
+            <p>Tu lista de ingredientes con el precio al que comprás. La plantilla calcula sola cuánto cuesta cada gramo, mililitro o unidad. Viene con 28 ingredientes y precios de ejemplo de Costa Rica, y espacio para los tuyos.</p>
+          </div>
+          <div class="sheet reveal">
+            <span class="num">03</span>
+            <h3>Costo por Plato (escandallo) <span class="tag">el corazón del kit</span></h3>
+            <p>Armás cada receta ingrediente por ingrediente: cantidad que se usa, merma (lo que se pierde pelando, limpiando, cociendo) y costo. Al final: cuánto cuesta la receta completa y cuánto cuesta cada porción. Trae 3 recetas de ejemplo y espacio para las tuyas.</p>
+          </div>
+          <div class="sheet reveal">
+            <span class="num">04</span>
+            <h3>Precio Sugerido <span class="tag">semáforo</span></h3>
+            <p>Con el costo por porción, la hoja propone el precio según el food cost que busqués (32% precargado, editable) y compara con tu precio actual: <span class="dotp ok" aria-hidden="true"></span> bien, <span class="dotp mid" aria-hidden="true"></span> revisar, <span class="dotp bad" aria-hidden="true"></span> perdiendo plata.</p>
+          </div>
+          <div class="sheet reveal">
+            <span class="num">05</span>
+            <h3>Punto de Equilibrio <span class="tag">cuánto vender</span></h3>
+            <p>Sumás tus gastos fijos del mes — alquiler, planilla, luz, agua y demás — y la hoja te dice cuántos platos tenés que vender al mes y por día para cubrirlos, y cuál es tu venta mínima.</p>
+          </div>
+          <div class="sheet reveal">
+            <span class="num">06</span>
+            <h3>Inventario <span class="tag">alertas</span></h3>
+            <p>Control simple de existencias: lo que entra, lo que sale y lo que queda. Cuando un producto baja del mínimo, la hoja avisa «Reponer» sola.</p>
+          </div>
+          <div class="sheet reveal">
+            <span class="num">07</span>
+            <h3>Ventas y Gastos <span class="tag">la ganancia</span></h3>
+            <p>El registro diario de lo que vendés y lo que gastás, por categoría. Al cierre, la cuenta que importa: ventas − gastos = ganancia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLIO 03 · LA GUÍA (la tapa del libro) -->
   <section class="guia" id="guia">
     <div class="wrap">
-      <p class="kicker">La guía en PDF</p>
-      <h2 class="title">«Cómo ponerle precio a un plato sin perder plata»</h2>
+      <div class="folio-head"><span class="no">FOLIO N.º 03</span><span class="ln" aria-hidden="true"></span><span class="pg">La guía en PDF</span></div>
+      <h2 class="title">«Cómo ponerle precio a un plato <em>sin perder plata</em>»</h2>
       <p class="sub">9 páginas que se leen en una sentada y se quedan de consulta. Todos los ejemplos de la guía usan los mismos números reales de la plantilla, para que veás cada cuenta hecha, no solo explicada.</p>
       <div class="guia-grid">
         <ul>
@@ -386,102 +503,119 @@ html.anim .reveal.on{opacity:1;transform:none}
         </ul>
         <div class="fact reveal">
           <div class="big">₡1.025.000</div>
-          <p>Ese es el ejemplo de gastos fijos mensuales de la guía. Con un margen de ₡2.550 por plato, la cuenta da <b style="color:#fff">402 platos al mes — unos 16 al día — solo para empatar</b>. La guía te enseña a hacer esa misma cuenta con tus números.</p>
+          <div class="leader"><span>de gastos fijos al mes (ejemplo)</span><span class="dots" aria-hidden="true"></span><span>402 platos</span></div>
+          <p>Ese es el ejemplo de gastos fijos mensuales de la guía. Con un margen de ₡2.550 por plato, la cuenta da <b>402 platos al mes — unos 16 al día — solo para empatar</b>. La guía te enseña a hacer esa misma cuenta con tus números.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PARA QUIÉN -->
+  <!-- FOLIO 04 · PARA QUIÉN -->
   <section id="para-quien">
     <div class="wrap">
-      <p class="kicker">Para quién es</p>
-      <h2 class="title">Hecho para negocios de comida que ponen los precios a ojo</h2>
+      <div class="folio-head"><span class="no">FOLIO N.º 04</span><span class="ln" aria-hidden="true"></span><span class="pg">Para quién es</span></div>
+      <h2 class="title">Hecho para negocios de comida que ponen los precios <em>a ojo</em></h2>
       <div class="who-grid">
         <div class="who yes reveal">
           <h3>Te sirve si…</h3>
           <ul>
-            <li>Tenés una soda, fonda, restaurante pequeño o repostería en Costa Rica o en Latinoamérica</li>
-            <li>Pusiste los precios mirando a la competencia o «porque siempre fue así»</li>
-            <li>Vendés todos los días pero a fin de mes la plata no cuadra</li>
-            <li>Querés una cuenta clara sin pagar un sistema mensual ni un contador para esto</li>
-            <li>Usás Excel o Google Sheets, aunque sea lo básico</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Tenés una soda, fonda, restaurante pequeño o repostería en Costa Rica o en Latinoamérica</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Pusiste los precios mirando a la competencia o «porque siempre fue así»</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Vendés todos los días pero a fin de mes la plata no cuadra</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Querés una cuenta clara sin pagar un sistema mensual ni un contador para esto</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Usás Excel o Google Sheets, aunque sea lo básico</span></li>
           </ul>
         </div>
         <div class="who no reveal">
           <h3>No es para vos si…</h3>
           <ul>
-            <li>Ya usás un software de costos o un POS que te da el food cost por plato</li>
-            <li>Buscás contabilidad completa, facturación o planillas: esto es solo costos y precios de cocina</li>
-            <li>Tu menú cambia por completo todos los días y no trabajás con recetas repetidas</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8C2A17" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg><span>Ya usás un software de costos o un POS que te da el food cost por plato</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8C2A17" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg><span>Buscás contabilidad completa, facturación o planillas: esto es solo costos y precios de cocina</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8C2A17" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg><span>Tu menú cambia por completo todos los días y no trabajás con recetas repetidas</span></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SEO / CÓMO SE CALCULA -->
-  <section id="como-calcular">
+  <!-- FOLIO 05 · CÓMO SE CALCULA (artículo) -->
+  <section id="como-calcular" style="padding-top:0">
     <div class="wrap">
+      <div class="folio-head"><span class="no">FOLIO N.º 05</span><span class="ln" aria-hidden="true"></span><span class="pg">Guía rápida y gratis</span></div>
       <article class="seo">
-        <p class="kicker">Guía rápida y gratis</p>
         <h2>Cómo calcular el costo de un plato en Costa Rica</h2>
-        <p>El costo de un plato — su <strong>food cost</strong> — es lo que gastás en ingredientes para servirlo, comparado con el precio al que lo vendés. Es el número que decide si tu soda gana o pierde plata en cada venta, y se calcula así:</p>
-        <div class="formula">
-          Costo por porción = suma de (cantidad que se usa × costo de cada ingrediente)<br>
-          <b>Food cost % = costo por porción ÷ precio de venta × 100</b><br>
-          Precio sugerido = costo por porción ÷ food cost objetivo
+        <p class="first">El costo de un plato — su <strong>food cost</strong> — es lo que gastás en ingredientes para servirlo, comparado con el precio al que lo vendés. Es el número que decide si tu soda gana o pierde plata en cada venta, y se calcula así:</p>
+        <div class="folio formula">
+          <div class="folio-in">
+            Costo por porción = suma de (cantidad que se usa × costo de cada ingrediente)<br>
+            <b>Food cost % = costo por porción ÷ precio de venta × 100</b><br>
+            Precio sugerido = costo por porción ÷ food cost objetivo
+          </div>
         </div>
         <h3>El paso a paso</h3>
         <ol>
-          <li><strong>Anotá cuánto comprás y a qué precio.</strong> Por ejemplo, el arroz a ₡1.200 el kilo: cada gramo cuesta ₡1,20.</li>
-          <li><strong>Pesá lo que lleva cada porción.</strong> Si el casado lleva 90 g de arroz, son ₡108 solo de arroz.</li>
-          <li><strong>Sumá la merma.</strong> Lo que se pela, se limpia o se reduce al cocer no llega al plato, pero lo pagaste. Si la carne pierde 10%, necesitás comprar 133 g para servir 120 g.</li>
-          <li><strong>Sumá todos los ingredientes.</strong> Ese total es el costo por porción: en el ejemplo completo del kit, el casado da ₡1.476.</li>
-          <li><strong>Compará con tu precio.</strong> ₡1.476 ÷ ₡4.500 = 33% de food cost.</li>
+          <li><span><strong>Anotá cuánto comprás y a qué precio.</strong> Por ejemplo, el arroz a ₡1.200 el kilo: cada gramo cuesta ₡1,20.</span></li>
+          <li><span><strong>Pesá lo que lleva cada porción.</strong> Si el casado lleva 90 g de arroz, son ₡108 solo de arroz.</span></li>
+          <li><span><strong>Sumá la merma.</strong> Lo que se pela, se limpia o se reduce al cocer no llega al plato, pero lo pagaste. Si la carne pierde 10%, necesitás comprar 133 g para servir 120 g.</span></li>
+          <li><span><strong>Sumá todos los ingredientes.</strong> Ese total es el costo por porción: en el ejemplo completo del kit, el casado da ₡1.476.</span></li>
+          <li><span><strong>Compará con tu precio.</strong> ₡1.476 ÷ ₡4.500 = 33% de food cost.</span></li>
         </ol>
         <h3>¿Cuánto debería dar?</h3>
         <p>En sodas y restaurantes pequeños, lo sano es un food cost entre <strong>28% y 35%</strong>. Por debajo de 28% conviene revisar si el precio está alto para tu cliente. Entre 36% y 42% el margen queda muy delgado: cualquier alza de ingredientes te pone en pérdida. Arriba de 42%, ese plato está perdiendo plata en cada venta, aunque el local se vea lleno.</p>
         <div class="ej">
-          <p><strong>El error más común:</strong> poner el precio copiando al negocio de la par o redondeando «a lo que suena bien», sin saber el costo. Dos sodas pueden vender el casado al mismo precio y una ganar y la otra perder, porque compran a precios distintos y sirven porciones distintas.</p>
+          <p><span class="ojo">El error más común</span><strong>Poner el precio copiando al negocio de la par o redondeando «a lo que suena bien», sin saber el costo.</strong> Dos sodas pueden vender el casado al mismo precio y una ganar y la otra perder, porque compran a precios distintos y sirven porciones distintas.</p>
         </div>
         <p>Hacer esta cuenta a mano, plato por plato, toma horas y hay que repetirla cada vez que sube un ingrediente. El kit de COSTEA trae la plantilla con las fórmulas listas — banco de ingredientes, escandallo, precio sugerido con semáforo y punto de equilibrio — más la guía que explica cada paso con ejemplos. <a href="#comprar">Ver el kit completo</a>.</p>
       </article>
     </div>
   </section>
 
-  <!-- COMPRAR -->
-  <section class="buy" id="comprar">
-    <div class="wrap buy-grid">
-      <div>
-        <p class="kicker">El kit completo</p>
-        <h2 class="title">Dejá de poner precios a ojo</h2>
-        <p class="sub">Descargás los dos archivos, abrís la plantilla, cambiás los precios de ejemplo por los tuyos y en una tarde sabés cuánto te cuesta cada plato de tu menú.</p>
-        <ul>
-          <li>Plantilla de Excel de 7 hojas, con fórmulas y ejemplos reales</li>
-          <li>Guía PDF de 9 páginas: «Cómo ponerle precio a un plato sin perder plata»</li>
-          <li>Entrega inmediata al pagar: los archivos te llegan al momento</li>
-          <li>Funciona en Excel y en Google Sheets</li>
-        </ul>
-      </div>
-      <div class="buy-card">
-        <div class="price">$14.99 <small>USD</small></div>
-        <p class="once">Pago único. Sin suscripción, sin pagos mensuales.</p>
-        <button class="btn" id="buy-btn" type="button" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg>Comprar el kit</button>
-        <div class="notice" role="note">
-          <b>La tienda abre esta semana.</b>
-          Estamos activando el pago en línea. En cuanto abra, este botón te lleva directo a la compra por $14.99 pago único. Volvé en estos días: el kit ya está listo.
+  <!-- CIERRE DE CUENTAS · COMPRAR -->
+  <section class="buy" id="comprar" style="padding-top:0">
+    <div class="wrap">
+      <div class="folio-head"><span class="no">CIERRE DE CUENTAS</span><span class="ln" aria-hidden="true"></span><span class="pg">El kit completo</span></div>
+      <div class="buy-grid">
+        <div>
+          <h2 class="title">Dejá de poner precios <em>a ojo</em></h2>
+          <p class="sub">Descargás los dos archivos, abrís la plantilla, cambiás los precios de ejemplo por los tuyos y en una tarde sabés cuánto te cuesta cada plato de tu menú.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Plantilla de Excel de 7 hojas, con fórmulas y ejemplos reales</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Guía PDF de 9 páginas: «Cómo ponerle precio a un plato sin perder plata»</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Entrega inmediata al pagar: los archivos te llegan al momento</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C6B3C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Funciona en Excel y en Google Sheets</span></li>
+          </ul>
         </div>
-        <p class="fine">Al abrir la tienda, el pago será con tarjeta por medio de una plataforma de pago segura, y la entrega de los archivos es automática apenas se confirma el pago.</p>
+        <div class="buy-card reveal">
+          <span class="stamp" id="stamp" role="note">La tienda abre<br>esta semana</span>
+          <div class="folio">
+            <div class="folio-in">
+              <div class="folio-top"><span>Asiento de venta</span><span class="r">N.º 001</span></div>
+              <div class="price">$14.99 <small>USD</small></div>
+              <p class="once">Pago único. Sin suscripción, sin pagos mensuales.</p>
+              <div class="buy-includes">
+                <div class="leader"><span>Plantilla Excel — 7 hojas</span><span class="dots" aria-hidden="true"></span><span class="inc">Incluido</span></div>
+                <div class="leader"><span>Guía PDF — 9 páginas</span><span class="dots" aria-hidden="true"></span><span class="inc">Incluido</span></div>
+                <div class="leader"><span>Entrega automática al pagar</span><span class="dots" aria-hidden="true"></span><span class="inc">Incluido</span></div>
+              </div>
+              <div class="total-rule"></div>
+              <button class="btn" id="buy-btn" type="button" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg>Comprar el kit</button>
+              <div class="notice" role="note">
+                <b>La tienda abre esta semana.</b>
+                Estamos activando el pago en línea. En cuanto abra, este botón te lleva directo a la compra por $14.99 pago único. Volvé en estos días: el kit ya está listo.
+              </div>
+              <p class="fine">Al abrir la tienda, el pago será con tarjeta por medio de una plataforma de pago segura, y la entrega de los archivos es automática apenas se confirma el pago.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="preguntas">
+  <!-- FOLIO 06 · PREGUNTAS -->
+  <section id="preguntas" style="padding-top:0">
     <div class="wrap">
-      <p class="kicker">Preguntas frecuentes</p>
-      <h2 class="title">Lo que todo el mundo pregunta antes de comprar</h2>
+      <div class="folio-head"><span class="no">FOLIO N.º 06</span><span class="ln" aria-hidden="true"></span><span class="pg">Preguntas frecuentes</span></div>
+      <h2 class="title">Lo que todo el mundo pregunta <em>antes de comprar</em></h2>
       <div class="faq-list">
         <details>
           <summary>¿Es un pago único o una suscripción?</summary>
@@ -534,6 +668,8 @@ html.anim .reveal.on{opacity:1;transform:none}
 const CHECKOUT_URL = ""; // ← URL de checkout de Lemon Squeezy (pendiente: apertura de tienda)
 
 (function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // --- Botón de compra ---
   var btn = document.getElementById('buy-btn');
   if (CHECKOUT_URL && btn) {
@@ -541,6 +677,7 @@ const CHECKOUT_URL = ""; // ← URL de checkout de Lemon Squeezy (pendiente: ape
     a.className = 'btn'; a.href = CHECKOUT_URL; a.textContent = 'Comprar el kit — $14.99';
     a.setAttribute('aria-label','Comprar el kit de costos por $14.99 pago único');
     btn.replaceWith(a);
+    var st = document.getElementById('stamp'); if (st) st.remove();
   }
   document.querySelectorAll('.js-buy').forEach(function(el){
     if (CHECKOUT_URL) { el.setAttribute('href', CHECKOUT_URL); }
@@ -554,13 +691,28 @@ const CHECKOUT_URL = ""; // ← URL de checkout de Lemon Squeezy (pendiente: ape
       sem = document.getElementById('semaforo'),
       semTexto = document.getElementById('sem-texto');
   function colon(n){ return '₡' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function pctTxt(fc){ return (Math.round(fc * 10) / 10).toString().replace('.', ',') + '%'; }
+  // Las cifras del folio «caen» a su nuevo valor: el movimiento ES la cuenta.
+  var tweenIds = {};
+  function tween(el, to, fmt){
+    var from = parseFloat(el.dataset.v || '0');
+    el.dataset.v = to;
+    if (reduced || !(to > 0) || !(from > 0) || from === to) { el.textContent = (to > 0) ? fmt(to) : '—'; return; }
+    if (tweenIds[el.id]) cancelAnimationFrame(tweenIds[el.id]);
+    var t0 = performance.now(), dur = 300;
+    (function step(t){
+      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = fmt(from + (to - from) * e);
+      if (k < 1) tweenIds[el.id] = requestAnimationFrame(step);
+    })(t0);
+  }
   function calcular(){
     var c = parseFloat(costo.value), p = parseFloat(precio.value);
-    if (!(c > 0)) { fcOut.textContent = '—'; sugOut.textContent = '—'; return; }
-    sugOut.textContent = colon(c / 0.32);
-    if (!(p > 0)) { fcOut.textContent = '—'; sem.className = 'semaforo mid'; semTexto.textContent = 'Escribí el precio al que lo vendés para ver el semáforo.'; return; }
+    if (!(c > 0)) { fcOut.textContent = '—'; fcOut.dataset.v = 0; sugOut.textContent = '—'; sugOut.dataset.v = 0; return; }
+    tween(sugOut, c / 0.32, colon);
+    if (!(p > 0)) { fcOut.textContent = '—'; fcOut.dataset.v = 0; sem.className = 'semaforo mid'; semTexto.textContent = 'Escribí el precio al que lo vendés para ver el semáforo.'; return; }
     var fc = c / p * 100;
-    fcOut.textContent = (Math.round(fc * 10) / 10).toString().replace('.', ',') + '%';
+    tween(fcOut, fc, pctTxt);
     if (fc <= 35) { sem.className = 'semaforo ok'; semTexto.textContent = 'Bien: estás en la zona sana (28% a 35%).'; }
     else if (fc <= 42) { sem.className = 'semaforo mid'; semTexto.textContent = 'Revisar: el margen quedó delgado. Ajustá porción, merma o precio.'; }
     else { sem.className = 'semaforo bad'; semTexto.textContent = 'Perdiendo plata: a ese precio, el plato no se paga solo.'; }
@@ -568,14 +720,21 @@ const CHECKOUT_URL = ""; // ← URL de checkout de Lemon Squeezy (pendiente: ape
   [costo, precio].forEach(function(el){ el.addEventListener('input', calcular); });
   calcular();
 
-  // --- Revelado suave al hacer scroll: el contenido es visible por defecto;
-  //         solo se oculta si el navegador soporta la animación (mejora progresiva) ---
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // --- Revelado suave + sello de tinta: el contenido es visible por defecto;
+  //         solo se anima si el navegador lo soporta y no hay movimiento reducido ---
+  if ('IntersectionObserver' in window && !reduced) {
     document.documentElement.classList.add('anim');
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
     }, {threshold: .12});
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    var stamp = document.getElementById('stamp');
+    if (stamp) {
+      var so = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { stamp.classList.add('hit'); so.disconnect(); } });
+      }, {threshold: .4});
+      so.observe(stamp);
+    }
   }
 })();
 </script>
