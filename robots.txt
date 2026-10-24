@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wzqdurl.github.io/costea-kit/sitemap.xml
+Sitemap: https://costea.pages.dev/sitemap.xml
