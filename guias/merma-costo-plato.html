@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merma: cuánto se pierde al cocinar y cómo contarla en el costo del plato — COSTEA</title>
+<meta name="description" content="La merma es lo que se pierde al pelar, limpiar y cocinar. La fórmula para contarla en el costo del plato, con los porcentajes del kit de COSTEA: 5% en vegetales y 10% en carne. Guía gratuita.">
+<meta property="og:title" content="Merma: cuánto se pierde al cocinar y cómo contarla en el costo del plato">
+<meta property="og:description" content="La fórmula de la merma con el ejemplo del kit: la carne con 10% de merma pasa de ₡3.800 a ₡4.222 por kilo útil. Ignorarla es cobrar de menos.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://costea.pages.dev/guias/merma-costo-plato">
+<meta property="og:image" content="https://costea.pages.dev/assets/hoja-precio-sugerido.png">
+<link rel="canonical" href="https://costea.pages.dev/guias/merma-costo-plato">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23211D14'/%3E%3Crect x='9' y='9' width='46' height='46' rx='4' fill='none' stroke='%23F7F1E3' stroke-width='3'/%3E%3Ccircle cx='32' cy='40' r='6' fill='%23A93420'/%3E%3Crect x='20' y='20' width='24' height='4' fill='%23F7F1E3'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Merma: cuánto se pierde al cocinar y cómo contarla en el costo del plato","description":"Qué es la merma, cómo se calcula y cómo se suma al costo del plato, con los porcentajes del kit de COSTEA.","author":{"@type":"Organization","name":"COSTEA"},"publisher":{"@type":"Organization","name":"COSTEA"},"inLanguage":"es","mainEntityOfPage":"https://costea.pages.dev/guias/merma-costo-plato"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"COSTEA","item":"https://costea.pages.dev/"},{"@type":"ListItem","position":2,"name":"Guías gratuitas","item":"https://costea.pages.dev/guias/merma-costo-plato"},{"@type":"ListItem","position":3,"name":"Merma"}]}
+</script>
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+/* ============================================================
+   COSTEA — «El libro de cuentas» · páginas de guía
+   Mismo sistema que la portada: papel crema, renglones de libro
+   mayor, tinta verde de fórmula, tinta roja de anotación.
+   ============================================================ */
+:root{
+  --paper:#F7F1E3; --paper-2:#FDFAF1; --paper-3:#EFE6CF;
+  --ink:#211D14; --ink-2:#4E4736; --ink-3:#6E6450;
+  --rule:#DCD2B6; --rule-2:#B4A67F;
+  --rojo:#A93420; --rojo-osc:#8C2A17;
+  --verde:#1C6B3C; --verde-bg:#E9EFE0;
+  --ambar-bg:#F6EBC8; --ambar-tx:#7A5410;
+  --rojo-bg:#F7E3DA;
+  --oro:#D9A92C;
+  --radius:4px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--verde)}
+:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
+footer :focus-visible{outline-color:var(--oro)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);font-weight:700;padding:.65rem 1.1rem;border-radius:0 0 var(--radius) 0;text-decoration:none}
+.skip:focus{left:0}
+.wrap{width:min(1240px,100% - 3rem);margin-inline:auto}
+.leader{display:flex;align-items:baseline;gap:.6rem}
+.leader .dots{flex:1;min-width:1.6rem;border-bottom:2px dotted var(--rule-2);transform:translateY(-.3em)}
+.folio-head{display:flex;align-items:baseline;gap:1.1rem;margin-bottom:1.6rem}
+.folio-head .no{font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--rojo);white-space:nowrap}
+.folio-head .ln{flex:1;border-top:1px solid var(--ink);transform:translateY(-.35em)}
+.folio-head .pg{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ink-3);white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;background:var(--ink);color:var(--paper);font-weight:700;text-decoration:none;padding:.92rem 1.7rem;border-radius:var(--radius);border:1.5px solid var(--ink);cursor:pointer;font-size:1rem;line-height:1.2;transition:background .18s ease,border-color .18s ease,transform .12s ease}
+.btn:hover{background:var(--rojo-osc);border-color:var(--rojo-osc)}
+.btn:active{transform:translateY(1px)}
+.btn.small{padding:.6rem 1.1rem;font-size:.92rem}
+.folio{background:var(--paper-2);border:1.5px solid var(--ink);box-shadow:8px 8px 0 rgba(33,29,20,.12);position:relative}
+.folio::before{content:"";position:absolute;top:0;bottom:0;left:2.6rem;width:1px;background:rgba(169,52,32,.4)}
+.folio-in{padding:1.5rem 1.6rem 1.4rem 4rem;position:relative;background-image:linear-gradient(transparent 33px,rgba(70,90,120,.12) 34px);background-size:100% 34px;background-position:0 12px}
+.dotp{border-radius:50%;border:1.8px solid rgba(33,29,20,.4);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4);display:inline-block;width:.62em;height:.62em;vertical-align:-.03em}
+.dotp.ok{background:#2F9E57}.dotp.mid{background:#DFA40C}.dotp.bad{background:var(--rojo)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--ink);box-shadow:0 3px 0 -1px var(--paper),0 4px 0 0 var(--ink)}
+.header-in{display:flex;align-items:center;gap:1.6rem;padding:.72rem 0}
+.logo{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.5rem;letter-spacing:.015em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.logo .dot{width:.55em;height:.55em;background:var(--rojo);border-radius:2px;display:inline-block;transform:rotate(45deg)}
+nav{margin-left:auto;display:flex;gap:1.5rem}
+nav a{color:var(--ink-2);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 0;transition:color .15s ease}
+nav a:hover{color:var(--rojo-osc);text-decoration:underline;text-underline-offset:5px}
+
+/* ---------- encabezado de la guía ---------- */
+.doc-head{padding:3.8rem 0 0}
+.doc-head h1{font-family:'Fraunces',Georgia,serif;font-weight:620;font-size:clamp(2.5rem,5.6vw,4.3rem);line-height:1.04;letter-spacing:-.018em;max-width:16em}
+.doc-head h1 em{font-style:italic;font-weight:560;color:var(--rojo)}
+.doc-head .deck{margin-top:1.2rem;font-size:1.16rem;line-height:1.6;color:var(--ink-2);max-width:37rem}
+.doc-head .deck strong{color:var(--ink)}
+.doc-meta{margin-top:1.6rem;border-top:1px solid var(--rule-2);padding-top:.8rem;font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---------- artículo editorial ---------- */
+article.seo{max-width:45rem;padding:2.6rem 0 4.2rem}
+article.seo h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(1.9rem,3.8vw,2.7rem);line-height:1.08;letter-spacing:-.015em;margin-top:2.6rem}
+article.seo h3{margin-top:2.2rem;font-family:'Fraunces',Georgia,serif;font-size:1.45rem;font-weight:600;display:flex;gap:.8rem;align-items:baseline}
+article.seo h3 .pn{font-style:italic;font-weight:560;color:var(--rojo);font-size:1.35em;flex:none}
+article.seo p{margin-top:1.05rem;color:#2E2A1E;font-size:1.05rem;line-height:1.65}
+article.seo p.first::first-letter{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:3.5em;float:left;line-height:.82;padding:.04em .14em 0 0;color:var(--rojo)}
+article.seo ul{margin:1rem 0 0;list-style:none;display:grid;gap:.6rem;color:#2E2A1E;font-size:1.03rem}
+article.seo ul li{display:flex;gap:.65rem;align-items:flex-start}
+article.seo ul li svg{flex:none;margin-top:.3em}
+.formula{margin-top:1.3rem}
+.formula .folio-in{padding:1.2rem 1.3rem 1.2rem 3.4rem;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:.99rem;line-height:34px}
+.formula b{color:var(--verde)}
+article.seo .ej{border-left:3.5px solid var(--rojo);background:var(--paper-3);padding:1.05rem 1.25rem;margin-top:1.4rem}
+article.seo .ej p{margin-top:0}
+article.seo .ej .ojo{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--rojo-osc);display:block;margin-bottom:.35rem}
+
+/* La tabla-asiento: el renglón del libro donde se asienta la cuenta */
+.tbl-wrap{margin-top:1.3rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.asiento{width:100%;border-collapse:collapse;font-size:.97rem;min-width:30rem}
+table.asiento caption{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--rojo);padding-bottom:.6rem}
+table.asiento th{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);text-align:left;padding:.5rem .45rem;border-bottom:1.5px solid var(--ink)}
+table.asiento td{padding:.55rem .45rem;border-bottom:1px solid var(--rule);color:#2E2A1E;vertical-align:baseline}
+table.asiento .n{text-align:right;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.asiento th.n{text-align:right}
+table.asiento tr.tot td{border-top:4px double var(--ink);border-bottom:0;font-weight:700;color:var(--ink);font-size:1.04rem;padding-top:.7rem}
+table.asiento tr.tot .n{font-size:1.18rem}
+table.asiento tr.sub td{border-bottom:0;color:var(--ink-2);font-size:.93rem}
+
+/* Rangos del semáforo, como asientos con su luz */
+.rango{display:flex;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--rule-2)}
+.rango:last-of-type{border-bottom:1px solid var(--rule-2)}
+.rango .light{width:1.15rem;height:1.15rem;border-radius:50%;flex:none;margin-top:.3rem;border:2px solid rgba(33,29,20,.45);box-shadow:inset 0 0 0 2px rgba(255,255,255,.4),0 1px 2px rgba(33,29,20,.25)}
+.rango .light.ok{background:#2F9E57}.rango .light.mid{background:#DFA40C}.rango .light.bad{background:var(--rojo)}
+.rango .rpct{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-weight:600;font-size:1.3rem;white-space:nowrap;min-width:6.2rem}
+.rango p{margin-top:.15rem!important;font-size:1rem!important}
+.rango p b{color:var(--ink)}
+
+/* Cierre de la guía: asiento con los enlaces del libro */
+.guia-cta{background:var(--paper-2);border:1.5px solid var(--ink);box-shadow:8px 8px 0 rgba(33,29,20,.12);padding:1.6rem 1.7rem;margin-top:2.8rem}
+.guia-cta h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.7rem;line-height:1.12;margin-top:0}
+.guia-cta p{margin-top:.6rem;color:var(--ink-2);font-size:1rem}
+.guia-cta .row{margin-top:1.2rem;display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+.guia-cta .alt{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--rojo);text-decoration-thickness:2px}
+.guia-cta .alt:hover{color:var(--rojo-osc)}
+.next-list{margin-top:2.4rem;border-top:4px double var(--ink);padding-top:1.2rem}
+.next-list .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--rojo);display:block;margin-bottom:.7rem}
+.next-list .leader{font-size:1.05rem;margin-top:.55rem}
+.next-list a{color:var(--ink);font-weight:700;text-decoration:none}
+.next-list a:hover{color:var(--rojo-osc);text-decoration:underline;text-underline-offset:4px}
+.next-list .pg{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-3);white-space:nowrap}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#CFC7AB;padding:2.4rem 0}
+.footer-in{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer .logo{color:var(--paper);font-size:1.25rem}
+footer p{font-size:.88rem;max-width:34rem}
+footer a{color:var(--oro)}
+@media print{ header{position:static} }
+
+@media (max-width: 900px){
+  nav{display:none}
+  .doc-head{padding:2.6rem 0 0}
+}
+@media (max-width: 520px){
+  body{font-size:16px}
+  .wrap{width:calc(100% - 2.2rem)}
+  .formula .folio-in{padding:1.05rem .9rem 1.05rem 2.6rem;font-size:.86rem}
+  .folio::before{left:1.7rem}
+  .rango{flex-wrap:wrap;gap:.4rem .8rem}
+  .rango .rpct{min-width:0}
+  .guia-cta{padding:1.3rem 1.15rem}
+  .header-in{gap:.8rem}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#top">Saltar al contenido</a>
+
+<header>
+  <div class="wrap header-in">
+    <a class="logo" href="../index.html"><span class="dot"></span>COSTEA</a>
+    <nav aria-label="Secciones">
+      <a href="../index.html#kit">El kit</a>
+      <a href="../index.html#guia">La guía</a>
+      <a href="../index.html#ejemplo">Ejemplo real</a>
+      <a href="../index.html#como-calcular">Cómo se calcula</a>
+      <a href="../index.html#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn small" href="../index.html#comprar" style="margin-left:auto">Quiero el kit — $14.99</a>
+  </div>
+</header>
+
+<main id="top" tabindex="-1">
+  <div class="wrap">
+    <div class="doc-head">
+      <div class="folio-head"><span class="no">GUÍA N.º 04</span><span class="ln" aria-hidden="true"></span><span class="pg">Guías gratuitas</span></div>
+      <h1>Merma: la parte que se pierde al cocinar <em>y que también hay que cobrar</em></h1>
+      <p class="deck">Al pelar, limpiar y cocinar siempre se pierde una parte: cáscaras, grasa, hueso, agua que se evapora. <strong>Esa pérdida se llama merma, y si no se cuenta en el costo, el plato se vende más barato de lo que cuesta.</strong> Acá va la cuenta, con los porcentajes del kit.</p>
+      <p class="doc-meta">COSTEA · Guías gratuitas · El número del kit de costos</p>
+    </div>
+
+    <article class="seo">
+      <p class="first">Comprar un kilo de carne no es lo mismo que servir un kilo de carne. Entre la pieza que llega del proveedor y la porción que sale en el plato hay cáscara, grasa, hueso y jugo que se pierde en la cocción. <strong>Esa diferencia es la merma, y es costo aunque no se sirva:</strong> se pagó completa en la factura del proveedor. El plato que se costea con el precio de compra, sin merma, queda costeado por debajo de lo real — y el margen que parece sano se achica en silencio, plato tras plato.</p>
+      <div class="folio formula">
+        <div class="folio-in">
+          <b>Costo por kilo útil = precio de compra ÷ (1 − merma)</b><br>
+          Merma = (peso que entra − peso que sale) ÷ peso que entra<br>
+          En la plantilla del kit, cada línea se multiplica sola: cantidad bruta × costo por unidad base.<br>
+          <a href="costear-un-casado.html">El casado del kit, ya costeado con su merma →</a>
+        </div>
+      </div>
+
+      <h2>El ejemplo del kit: la carne con 10% de merma</h2>
+      <p>La guía del kit trabaja con mermas reales por ingrediente: 5% en plátano, repollo, cebolla y chile, y 10% en la carne. Con el precio de ejemplo de la carne, la cuenta es esta:</p>
+      <div class="tbl-wrap">
+        <table class="asiento">
+          <caption>El ejemplo del kit · costo con merma</caption>
+          <thead>
+            <tr><th>Concepto</th><th class="n">Monto</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Precio de compra de la carne (por kilo)</td><td class="n">₡3.800</td></tr>
+            <tr><td>Merma de la carne</td><td class="n">10%</td></tr>
+            <tr class="tot"><td>Costo por kilo útil</td><td class="n">₡4.222</td></tr>
+            <tr class="sub"><td colspan="2">₡3.800 ÷ (1 − 0,10) = ₡3.800 ÷ 0,90 = ₡4.222,22 por kilo que realmente se sirve. Costear el plato a ₡3.800 el kilo es regalar ₡422 por kilo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Lo mismo pasa con lo demás: un ingrediente de ₡1.000 el kilo con 5% de merma cuesta en realidad ₡1.053 por kilo útil (₡1.000 ÷ 0,95). Parece poco por línea, pero el casado del kit lleva más de diez ingredientes: sumadas, las mermas son parte de la diferencia entre el costo «a ojo» y el costo real de ₡1.476 por plato.</p>
+
+      <h2>El paso a paso, con tus números</h2>
+
+      <h3><span class="pn">01</span> Pesá antes y después, una vez</h3>
+      <p>Para cada ingrediente que se pela, limpia o cocina, pesá lo que entra y lo que queda servible. La merma es la diferencia dividida entre lo que entró. No hace falta hacerlo todos los días: una medición bien hecha por ingrediente alcanza, y se repite solo cuando cambia el proveedor o el corte.</p>
+
+      <h3><span class="pn">02</span> Dividí el precio entre lo que queda</h3>
+      <p>El costo que manda es el del kilo útil, no el de la factura: precio ÷ (1 − merma). Esa es la cifra que va en la receta. Si la receta pide 120 gramos de carne, se multiplican 0,12 × ₡4.222, no 0,12 × ₡3.800.</p>
+
+      <h3><span class="pn">03</span> Revisá el precio de venta</h3>
+      <p>Con el costo ya corregido, mirá el food cost: si sube por encima del rango sano, el precio o la porción hay que ajustarlos — no la merma, que no se negocia. Los rangos sanos están en la <a href="food-cost-porcentaje.html">guía del food cost</a>, y la meta mensual que ese margen tiene que cubrir está en la <a href="punto-de-equilibrio.html">guía del punto de equilibrio</a>.</p>
+
+      <div class="ej">
+        <p><span class="ojo">El error más común</span><strong>Costear con el precio de la factura y «compensar» subiendo un poquito el precio a ojo.</strong> La merma no es pareja entre ingredientes — 5% en unos, 10% en otros — así que el ajuste a ojo siempre queda corto en unos platos y pasado en otros. La cuenta por ingrediente es la única que cuadra.</p>
+      </div>
+
+      <h2>La merma también se vigila</h2>
+      <p>Si la merma medida sube de repente, algo cambió: otro corte, otro proveedor, más desperdicio en la preparación. Medirla cada tanto es control de calidad gratis: avisa antes de que el costo se dispare. En el kit, la columna de merma está en cada línea de la receta, así que cualquier cambio se refleja solo en el costo por plato.</p>
+
+      <div class="guia-cta">
+        <h2>Costeá tu plato con la hoja gratis</h2>
+        <p>La hoja de costeo gratuita de COSTEA trae el casado ya costeado con su merma como ejemplo: cambiá los precios por los de tus proveedores y la cuenta sale sola. El kit completo ($14.99, pago único) suma precio sugerido, punto de equilibrio, inventario y ventas para todo el menú.</p>
+        <div class="row">
+          <a class="btn" href="../hoja-de-costeo-gratis.xlsx" download>Descargar la hoja gratis (.xlsx)</a>
+          <a class="alt" href="../index.html#comprar">Ver el kit completo</a>
+        </div>
+      </div>
+
+      <div class="next-list">
+        <span class="k">Seguir leyendo</span>
+        <div class="leader"><a href="costear-un-casado.html">Cómo costear un casado en Costa Rica, paso a paso</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 01</span></div>
+        <div class="leader"><a href="food-cost-porcentaje.html">Food cost: qué porcentaje es sano para una soda</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 02</span></div>
+        <div class="leader"><a href="punto-de-equilibrio.html">Punto de equilibrio: cuántos platos vender al mes para no perder</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 03</span></div>
+        <div class="leader"><a href="../index.html#top">La calculadora de food cost, en la portada</a><span class="dots" aria-hidden="true"></span><span class="pg">COSTEA</span></div>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-in">
+    <a class="logo" href="../index.html"><span class="dot"></span>COSTEA</a>
+    <p>Kit de Costos y Precios para Sodas y Restaurantes — plantilla de Excel + guía en PDF. $14.99 pago único. Hecho para negocios de comida de Costa Rica y Latinoamérica.</p>
+    <p>© 2026 COSTEA</p>
+  </div>
+</footer>
+
+</body>
+</html>
