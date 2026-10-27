@@ -94,6 +94,8 @@ section{padding:4.6rem 0}
 .btn[disabled]{background:transparent;color:var(--ink-2);border:2px dashed var(--ink-3);cursor:not-allowed;transform:none}
 .btn[disabled]:hover{background:transparent;border-color:var(--ink-3)}
 .btn[disabled] svg{flex:none}
+.btn.sec{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.sec:hover{background:var(--paper-3);border-color:var(--rojo-osc);color:var(--rojo-osc)}
 /* Sello de tinta roja */
 .stamp{display:inline-block;font-family:'IBM Plex Mono',monospace;font-weight:600;text-transform:uppercase;letter-spacing:.13em;font-size:.8rem;line-height:1.45;text-align:center;color:var(--rojo);border:2.5px solid var(--rojo);border-radius:var(--radius);padding:.55rem .85rem;box-shadow:inset 0 0 0 2px var(--paper-2),inset 0 0 0 4px rgba(169,52,32,.75);transform:rotate(-7deg);opacity:.94}
 @keyframes stamp-in{0%{opacity:0;transform:rotate(-7deg) scale(1.65)}55%{opacity:1}100%{opacity:.94;transform:rotate(-7deg) scale(1)}}
@@ -261,6 +263,7 @@ article.seo .ej .ojo{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font
 .buy-includes .leader .inc{font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);white-space:nowrap}
 .buy-card .total-rule{border-top:4px double var(--ink);margin-top:1.2rem}
 .buy-card .btn{width:100%;margin-top:1.2rem;font-size:1.05rem}
+.buy-card .btn.sec{margin-top:.7rem}
 .notice{margin-top:1rem;font-size:.94rem;color:var(--ink-2)}
 .notice b{display:block;color:var(--ink);margin-bottom:.2rem}
 .buy-card .fine{margin-top:.9rem;font-size:.84rem;color:var(--ink-3)}
@@ -671,6 +674,7 @@ footer a{color:var(--oro)}
               </div>
               <div class="total-rule"></div>
               <button class="btn" id="buy-btn" type="button" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 13.5"/></svg>Comprar el kit</button>
+              <a class="btn sec" id="notify-btn" href="mailto:costea.cr@proton.me?subject=Av%C3%ADsame%20cuando%20abra%20la%20tienda%20COSTEA&amp;body=Hola%20COSTEA%2C%20av%C3%ADsenme%20cuando%20abra%20la%20tienda%20para%20comprar%20el%20kit%20de%20costos%20(%2414.99).%20Gracias."><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Avísame cuando abra la tienda</a>
               <div class="notice" role="note">
                 <b>La tienda abre esta semana.</b>
                 Estamos activando el pago en línea. En cuanto abra, este botón te lleva directo a la compra por $14.99 pago único. Volvé en estos días: el kit ya está listo.
@@ -751,6 +755,7 @@ const CHECKOUT_URL = ""; // ← URL de checkout de Lemon Squeezy (pendiente: ape
     a.setAttribute('aria-label','Comprar el kit de costos por $14.99 pago único');
     btn.replaceWith(a);
     var st = document.getElementById('stamp'); if (st) st.remove();
+    var nt = document.getElementById('notify-btn'); if (nt) nt.remove();
   }
   document.querySelectorAll('.js-buy').forEach(function(el){
     if (CHECKOUT_URL) { el.setAttribute('href', CHECKOUT_URL); }
