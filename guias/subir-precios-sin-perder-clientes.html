@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo subir los precios sin perder clientes — COSTEA</title>
+<meta name="description" content="Subir ₡500 el casado suena a que se van los clientes. Con los números del kit, si se van 10 de cada 100, la soda gana ₡14.760 más al mes. Cómo calcular cuánto se puede perder y seguir ganando, y cómo subir el precio sin que se sienta como un golpe. Guía gratuita.">
+<meta property="og:title" content="Cómo subir los precios sin perder clientes">
+<meta property="og:description" content="El casado de ₡4.500 a ₡5.000: si se van 10 de cada 100 clientes, la soda gana ₡14.760 más al mes. La cuenta completa, línea por línea.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://costea.pages.dev/guias/subir-precios-sin-perder-clientes">
+<meta property="og:image" content="https://costea.pages.dev/assets/hoja-precio-sugerido.png">
+<link rel="canonical" href="https://costea.pages.dev/guias/subir-precios-sin-perder-clientes">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23211D14'/%3E%3Crect x='9' y='9' width='46' height='46' rx='4' fill='none' stroke='%23F7F1E3' stroke-width='3'/%3E%3Ccircle cx='32' cy='40' r='6' fill='%23A93420'/%3E%3Crect x='20' y='20' width='24' height='4' fill='%23F7F1E3'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Cómo subir los precios sin perder clientes","description":"Cómo subir el precio de un plato sin perder clientes: la cuenta del margen, cuántos clientes se pueden perder y seguir ganando, y el paso a paso, con el ejemplo del kit de COSTEA.","author":{"@type":"Organization","name":"COSTEA"},"publisher":{"@type":"Organization","name":"COSTEA"},"inLanguage":"es","mainEntityOfPage":"https://costea.pages.dev/guias/subir-precios-sin-perder-clientes"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"COSTEA","item":"https://costea.pages.dev/"},{"@type":"ListItem","position":2,"name":"Guías gratuitas","item":"https://costea.pages.dev/guias/subir-precios-sin-perder-clientes"},{"@type":"ListItem","position":3,"name":"Subir precios"}]}
+</script>
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+/* ============================================================
+   COSTEA — «El libro de cuentas» · páginas de guía
+   Mismo sistema que la portada: papel crema, renglones de libro
+   mayor, tinta verde de fórmula, tinta roja de anotación.
+   ============================================================ */
+:root{
+  --paper:#F7F1E3; --paper-2:#FDFAF1; --paper-3:#EFE6CF;
+  --ink:#211D14; --ink-2:#4E4736; --ink-3:#6E6450;
+  --rule:#DCD2B6; --rule-2:#B4A67F;
+  --rojo:#A93420; --rojo-osc:#8C2A17;
+  --verde:#1C6B3C; --verde-bg:#E9EFE0;
+  --ambar-bg:#F6EBC8; --ambar-tx:#7A5410;
+  --rojo-bg:#F7E3DA;
+  --oro:#D9A92C;
+  --radius:4px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--verde)}
+:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
+footer :focus-visible{outline-color:var(--oro)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);font-weight:700;padding:.65rem 1.1rem;border-radius:0 0 var(--radius) 0;text-decoration:none}
+.skip:focus{left:0}
+.wrap{width:min(1240px,100% - 3rem);margin-inline:auto}
+.leader{display:flex;align-items:baseline;gap:.6rem}
+.leader .dots{flex:1;min-width:1.6rem;border-bottom:2px dotted var(--rule-2);transform:translateY(-.3em)}
+.folio-head{display:flex;align-items:baseline;gap:1.1rem;margin-bottom:1.6rem}
+.folio-head .no{font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--rojo);white-space:nowrap}
+.folio-head .ln{flex:1;border-top:1px solid var(--ink);transform:translateY(-.35em)}
+.folio-head .pg{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ink-3);white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;background:var(--ink);color:var(--paper);font-weight:700;text-decoration:none;padding:.92rem 1.7rem;border-radius:var(--radius);border:1.5px solid var(--ink);cursor:pointer;font-size:1rem;line-height:1.2;transition:background .18s ease,border-color .18s ease,transform .12s ease}
+.btn:hover{background:var(--rojo-osc);border-color:var(--rojo-osc)}
+.btn:active{transform:translateY(1px)}
+.btn.small{padding:.6rem 1.1rem;font-size:.92rem}
+.folio{background:var(--paper-2);border:1.5px solid var(--ink);box-shadow:8px 8px 0 rgba(33,29,20,.12);position:relative}
+.folio::before{content:"";position:absolute;top:0;bottom:0;left:2.6rem;width:1px;background:rgba(169,52,32,.4)}
+.folio-in{padding:1.5rem 1.6rem 1.4rem 4rem;position:relative;background-image:linear-gradient(transparent 33px,rgba(70,90,120,.12) 34px);background-size:100% 34px;background-position:0 12px}
+.dotp{border-radius:50%;border:1.8px solid rgba(33,29,20,.4);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4);display:inline-block;width:.62em;height:.62em;vertical-align:-.03em}
+.dotp.ok{background:#2F9E57}.dotp.mid{background:#DFA40C}.dotp.bad{background:var(--rojo)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--ink);box-shadow:0 3px 0 -1px var(--paper),0 4px 0 0 var(--ink)}
+.header-in{display:flex;align-items:center;gap:1.6rem;padding:.72rem 0}
+.logo{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.5rem;letter-spacing:.015em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.logo .dot{width:.55em;height:.55em;background:var(--rojo);border-radius:2px;display:inline-block;transform:rotate(45deg)}
+nav{margin-left:auto;display:flex;gap:1.5rem}
+nav a{color:var(--ink-2);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 0;transition:color .15s ease}
+nav a:hover{color:var(--rojo-osc);text-decoration:underline;text-underline-offset:5px}
+
+/* ---------- encabezado de la guía ---------- */
+.doc-head{padding:3.8rem 0 0}
+.doc-head h1{font-family:'Fraunces',Georgia,serif;font-weight:620;font-size:clamp(2.5rem,5.6vw,4.3rem);line-height:1.04;letter-spacing:-.018em;max-width:16em}
+.doc-head h1 em{font-style:italic;font-weight:560;color:var(--rojo)}
+.doc-head .deck{margin-top:1.2rem;font-size:1.16rem;line-height:1.6;color:var(--ink-2);max-width:37rem}
+.doc-head .deck strong{color:var(--ink)}
+.doc-meta{margin-top:1.6rem;border-top:1px solid var(--rule-2);padding-top:.8rem;font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---------- artículo editorial ---------- */
+article.seo{max-width:45rem;padding:2.6rem 0 4.2rem}
+article.seo h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(1.9rem,3.8vw,2.7rem);line-height:1.08;letter-spacing:-.015em;margin-top:2.6rem}
+article.seo h3{margin-top:2.2rem;font-family:'Fraunces',Georgia,serif;font-size:1.45rem;font-weight:600;display:flex;gap:.8rem;align-items:baseline}
+article.seo h3 .pn{font-style:italic;font-weight:560;color:var(--rojo);font-size:1.35em;flex:none}
+article.seo p{margin-top:1.05rem;color:#2E2A1E;font-size:1.05rem;line-height:1.65}
+article.seo p.first::first-letter{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:3.5em;float:left;line-height:.82;padding:.04em .14em 0 0;color:var(--rojo)}
+article.seo ul{margin:1rem 0 0;list-style:none;display:grid;gap:.6rem;color:#2E2A1E;font-size:1.03rem}
+article.seo ul li{display:flex;gap:.65rem;align-items:flex-start}
+article.seo ul li svg{flex:none;margin-top:.3em}
+.formula{margin-top:1.3rem}
+.formula .folio-in{padding:1.2rem 1.3rem 1.2rem 3.4rem;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:.99rem;line-height:34px}
+.formula b{color:var(--verde)}
+article.seo .ej{border-left:3.5px solid var(--rojo);background:var(--paper-3);padding:1.05rem 1.25rem;margin-top:1.4rem}
+article.seo .ej p{margin-top:0}
+article.seo .ej .ojo{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--rojo-osc);display:block;margin-bottom:.35rem}
+
+/* La tabla-asiento: el renglón del libro donde se asienta la cuenta */
+.tbl-wrap{margin-top:1.3rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.asiento{width:100%;border-collapse:collapse;font-size:.97rem;min-width:30rem}
+table.asiento caption{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--rojo);padding-bottom:.6rem}
+table.asiento th{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);text-align:left;padding:.5rem .45rem;border-bottom:1.5px solid var(--ink)}
+table.asiento td{padding:.55rem .45rem;border-bottom:1px solid var(--rule);color:#2E2A1E;vertical-align:baseline}
+table.asiento .n{text-align:right;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.asiento th.n{text-align:right}
+table.asiento tr.tot td{border-top:4px double var(--ink);border-bottom:0;font-weight:700;color:var(--ink);font-size:1.04rem;padding-top:.7rem}
+table.asiento tr.tot .n{font-size:1.18rem}
+table.asiento tr.sub td{border-bottom:0;color:var(--ink-2);font-size:.93rem}
+
+/* Rangos del semáforo, como asientos con su luz */
+.rango{display:flex;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--rule-2)}
+.rango:last-of-type{border-bottom:1px solid var(--rule-2)}
+.rango .light{width:1.15rem;height:1.15rem;border-radius:50%;flex:none;margin-top:.3rem;border:2px solid rgba(33,29,20,.45);box-shadow:inset 0 0 0 2px rgba(255,255,255,.4),0 1px 2px rgba(33,29,20,.25)}
+.rango .light.ok{background:#2F9E57}.rango .light.mid{background:#DFA40C}.rango .light.bad{background:var(--rojo)}
+.rango .rpct{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-weight:600;font-size:1.3rem;white-space:nowrap;min-width:6.2rem}
+.rango p{margin-top:.15rem!important;font-size:1rem!important}
+.rango p b{color:var(--ink)}
+
+/* Cierre de la guía: asiento con los enlaces del libro */
+.guia-cta{background:var(--paper-2);border:1.5px solid var(--ink);box-shadow:8px 8px 0 rgba(33,29,20,.12);padding:1.6rem 1.7rem;margin-top:2.8rem}
+.guia-cta h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.7rem;line-height:1.12;margin-top:0}
+.guia-cta p{margin-top:.6rem;color:var(--ink-2);font-size:1rem}
+.guia-cta .row{margin-top:1.2rem;display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+.guia-cta .alt{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--rojo);text-decoration-thickness:2px}
+.guia-cta .alt:hover{color:var(--rojo-osc)}
+.next-list{margin-top:2.4rem;border-top:4px double var(--ink);padding-top:1.2rem}
+.next-list .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--rojo);display:block;margin-bottom:.7rem}
+.next-list .leader{font-size:1.05rem;margin-top:.55rem}
+.next-list a{color:var(--ink);font-weight:700;text-decoration:none}
+.next-list a:hover{color:var(--rojo-osc);text-decoration:underline;text-underline-offset:4px}
+.next-list .pg{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-3);white-space:nowrap}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#CFC7AB;padding:2.4rem 0}
+.footer-in{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+footer .logo{color:var(--paper);font-size:1.25rem}
+footer p{font-size:.88rem;max-width:34rem}
+footer a{color:var(--oro)}
+@media print{ header{position:static} }
+
+@media (max-width: 900px){
+  nav{display:none}
+  .doc-head{padding:2.6rem 0 0}
+}
+@media (max-width: 520px){
+  body{font-size:16px}
+  .wrap{width:calc(100% - 2.2rem)}
+  .formula .folio-in{padding:1.05rem .9rem 1.05rem 2.6rem;font-size:.86rem}
+  .folio::before{left:1.7rem}
+  .rango{flex-wrap:wrap;gap:.4rem .8rem}
+  .rango .rpct{min-width:0}
+  .guia-cta{padding:1.3rem 1.15rem}
+  .header-in{gap:.8rem}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#top">Saltar al contenido</a>
+
+<header>
+  <div class="wrap header-in">
+    <a class="logo" href="../index.html"><span class="dot"></span>COSTEA</a>
+    <nav aria-label="Secciones">
+      <a href="../index.html#kit">El kit</a>
+      <a href="../index.html#guia">La guía</a>
+      <a href="../index.html#ejemplo">Ejemplo real</a>
+      <a href="../index.html#como-calcular">Cómo se calcula</a>
+      <a href="../index.html#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn small" href="../index.html#comprar" style="margin-left:auto">Quiero el kit — $14.99</a>
+  </div>
+</header>
+
+<main id="top" tabindex="-1">
+  <div class="wrap">
+    <div class="doc-head">
+      <div class="folio-head"><span class="no">GUÍA N.º 09</span><span class="ln" aria-hidden="true"></span><span class="pg">Guías gratuitas</span></div>
+      <h1>Cómo subir los precios <em>sin perder clientes</em></h1>
+      <p class="deck">Subir ₡500 el casado suena a que se van a ir los clientes. <strong>Con los números del kit, si se van 10 de cada 100, la soda gana ₡14.760 más al mes vendiendo menos platos.</strong> La clave no es subir por subir: es subir con la cuenta hecha y en el momento correcto.</p>
+      <p class="doc-meta">COSTEA · Guías gratuitas · El número del kit de costos</p>
+    </div>
+
+      <p class="first">El miedo a subir precios es real y tiene fundamento: un cliente que se va es plata que no vuelve. <strong>Pero el miedo contrario también cuesta: un precio viejo, con los insumos subiendo, se come la ganancia en silencio.</strong> La pregunta no es «¿subo o no subo?», es «¿cuánto puedo perder y seguir ganando?» — y esa pregunta sí tiene respuesta con números.</p>
+      <div class="folio formula">
+        <div class="folio-in">
+          <b>Margen por plato = precio de venta − costo de ingredientes</b><br>
+          <b>Margen del mes = margen por plato × platos vendidos</b><br>
+          Si sube el precio y vende un poco menos, la pregunta es si el margen total sube o baja.<br>
+          <a href="food-cost-porcentaje.html">El food cost y el rango sano, antes de tocar precios →</a>
+        </div>
+      </div>
+
+      <h2>El ejemplo: el casado de ₡4.500 a ₡5.000</h2>
+      <p>El casado del kit cuesta ₡1.476 por porción. Hoy se vende a ₡4.500, con un food cost de 32,8% — en verde. Supongamos que la soda vende 100 casados al mes y sube el precio a ₡5.000. El susto: se van 10 clientes de cada 100. La cuenta:</p>
+      <div class="tbl-wrap">
+        <table class="asiento">
+          <caption>El ejemplo del kit · 100 casados al mes, antes y después de subir ₡500</caption>
+          <thead>
+            <tr><th>Escenario</th><th class="n">Platos</th><th class="n">Precio</th><th class="n">Ventas</th><th class="n">Ingredientes</th><th class="n">Margen bruto</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Hoy, a ₡4.500</td><td class="n">100</td><td class="n">₡4.500</td><td class="n">₡450.000</td><td class="n">₡147.600</td><td class="n">₡302.400</td></tr>
+            <tr><td>Sube a ₡5.000, se van 10</td><td class="n">90</td><td class="n">₡5.000</td><td class="n">₡450.000</td><td class="n">₡132.840</td><td class="n">₡317.160</td></tr>
+            <tr class="tot"><td>Diferencia</td><td class="n">−10 platos</td><td class="n">+₡500</td><td class="n">₡0</td><td class="n">−₡14.760</td><td class="n">+₡14.760</td></tr>
+            <tr class="sub"><td colspan="6">Las ventas quedan iguales (₡450.000), pero se cocinan 10 platos menos: el costo de ingredientes baja ₡14.760 y el margen sube exactamente eso. A ₡5.000 el food cost del casado queda en 29,5%, todavía en verde. Menos trabajo, misma caja, más margen.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Cuántos clientes se pueden perder y seguir ganando igual</h2>
+      <p>Cada plato vendido a ₡5.000 deja ₡3.524 de margen (5.000 − 1.476). Para igualar el margen actual de ₡302.400 hacen falta 302.400 ÷ 3.524 = 85,8 platos, o sea <strong>86</strong>. Dicho de otra forma: <strong>se pueden perder hasta 14 de cada 100 clientes y la soda gana lo mismo que antes</strong>. La tabla completa:</p>
+      <div class="tbl-wrap">
+        <table class="asiento">
+          <caption>El casado a ₡5.000, según cuántos de los 100 clientes se quedan</caption>
+          <thead>
+            <tr><th>Casados vendidos</th><th class="n">Margen por plato</th><th class="n">Margen del mes</th><th class="n">Contra los ₡302.400 de hoy</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>100 (no se va nadie)</td><td class="n">₡3.524</td><td class="n">₡352.400</td><td class="n">+₡50.000</td></tr>
+            <tr><td>95 (se van 5)</td><td class="n">₡3.524</td><td class="n">₡334.780</td><td class="n">+₡32.380</td></tr>
+            <tr><td>90 (se van 10)</td><td class="n">₡3.524</td><td class="n">₡317.160</td><td class="n">+₡14.760</td></tr>
+            <tr><td>86 (se van 14)</td><td class="n">₡3.524</td><td class="n">₡303.064</td><td class="n">+₡664</td></tr>
+            <tr><td>85 (se van 15)</td><td class="n">₡3.524</td><td class="n">₡299.540</td><td class="n">−₡2.860</td></tr>
+            <tr class="sub"><td colspan="4">El punto de quiebre está en 86 platos: por debajo de ahí, el aumento ya no compensa. Si la caída es mayor, se vuelve al precio anterior o se prueba con otro plato — nunca se insiste a ciegas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Los otros dos platos del kit, con el mismo aumento</h2>
+      <p>La misma lógica vale para todo el menú. La olla de carne es el caso más claro: hoy se vende a ₡4.000 con un food cost de 37,1% — en amarillo — y subirla a ₡4.500 la deja en 33,0%, en verde, con ₡500 más de margen por porción. El desayuno típico, de ₡3.200 a ₡3.500, pasa de 32,1% a 29,3% y gana ₡300 por plato:</p>
+      <div class="tbl-wrap">
+        <table class="asiento">
+          <caption>Los tres platos del kit · precio actual contra precio subido ₡500 / ₡300</caption>
+          <thead>
+            <tr><th>Plato</th><th class="n">Costo</th><th class="n">Precio hoy</th><th class="n">Food cost hoy</th><th class="n">Precio nuevo</th><th class="n">Food cost nuevo</th><th class="n">Margen extra por plato</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Casado</td><td class="n">₡1.476</td><td class="n">₡4.500</td><td class="n">32,8%</td><td class="n">₡5.000</td><td class="n">29,5%</td><td class="n">+₡500</td></tr>
+            <tr><td>Olla de carne</td><td class="n">₡1.484</td><td class="n">₡4.000</td><td class="n">37,1%</td><td class="n">₡4.500</td><td class="n">33,0%</td><td class="n">+₡500</td></tr>
+            <tr><td>Desayuno típico</td><td class="n">₡1.026</td><td class="n">₡3.200</td><td class="n">32,1%</td><td class="n">₡3.500</td><td class="n">29,3%</td><td class="n">+₡300</td></tr>
+            <tr class="sub"><td colspan="7">La olla de carne es la primera que debería subir: es la única de las tres que hoy está en amarillo. El casado y el desayuno ya están en verde, así que su aumento es ganancia extra, no corrección.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>El paso a paso, con tus números</h2>
+
+      <h3><span class="pn">01</span> Subí un plato a la vez, no todo el menú</h3>
+      <p>Si sube todo junto y caen las ventas, no sabrá qué plato espantó a la gente. Empiece por el plato con el food cost más alto — en el kit, la olla de carne — y deje los demás quietos dos semanas. Un cambio a la vez es la única forma de medir.</p>
+
+      <h3><span class="pn">02</span> Subí de a poco, en números redondos</h3>
+      <p>De ₡250 a ₡500 por vez, y siempre a un número bonito: ₡4.500, ₡4.750, ₡5.000. Los precios redondos facilitan el vuelto y se ven mejor en el menú. Un aumento de ₡100 parece tacaño y uno de ₡1.000 de golpe parece abuso: el medio punto es el lugar correcto.</p>
+
+      <h3><span class="pn">03</span> Poné el precio nuevo a la vista, sin esconderlo</h3>
+      <p>El precio nuevo va en la pizarra y en el menú el mismo día que entra en vigor, sin disculpas ni letreros de «por el aumento de los insumos». El cliente que ve el precio antes de pedir no se siente engañado; el que lo descubre en la cuenta, sí. Y no se lo anuncie como favor: es su negocio, no una disculpa.</p>
+
+      <h3><span class="pn">04</span> Medí dos semanas y decidí con el número, no con el susto</h3>
+      <p>Anote cuántos platos de ese plato vendió por día antes y después del cambio — la hoja de <a href="ventas-y-gastos-gano-o-perdio.html">Ventas y Gastos</a> ya lleva ese registro. Si la caída es menor que el punto de quiebre (en el casado, perder hasta 14 de 100), el aumento quedó. Si es mayor, vuelva al precio anterior: no perdió nada, ganó un dato. El primer día siempre asusta; la segunda semana dice la verdad.</p>
+
+      <div class="ej">
+        <p><span class="ojo">El error más común</span><strong>Subir el precio sin haber costeado.</strong> Si no sabe cuánto le cuesta el plato, no sabe si el aumento arregla algo o si el problema es la porción, la merma o el proveedor. El aumento sin escandallo es otra adivinanza, igual que el precio viejo. Y la otra cara: <strong>bajar el precio para atraer clientes sin bajar el costo</strong> — cada plato vendido a pérdida es un cliente más que lo hunde más rápido. El precio se mueve con la cuenta hecha, nunca por miedo ni por corazonada.</p>
+      </div>
+
+      <h2>Subir precios es cuidar el negocio, no cobrar de más</h2>
+      <p>Un precio que no se mueve mientras todo sube es un negocio que se achica en silencio. Con el costo por plato, el food cost y el punto de quiebre en la mano, subir ₡500 no es una apuesta: es una decisión con un número de respaldo y una forma de medir si funcionó. Esa es la diferencia entre «ojalá no se enojen» y saberlo.</p>
+      <div class="guia-cta">
+        <h2>Calculá tu punto de quiebre con la hoja gratis</h2>
+        <p>La hoja de costeo gratuita de COSTEA trae el casado ya costeado con su merma como ejemplo: cambiá los precios por los de tus proveedores y la cuenta sale sola. El kit completo ($14.99, pago único) suma precio sugerido, punto de equilibrio, inventario y ventas para todo el menú.</p>
+        <div class="row">
+          <a class="btn" href="../hoja-de-costeo-gratis.xlsx" download>Descargar la hoja gratis (.xlsx)</a>
+          <a class="alt" href="../index.html#comprar">Ver el kit completo</a>
+        </div>
+      </div>
+
+      <div class="next-list">
+        <span class="k">Seguir leyendo</span>
+        <div class="leader"><a href="costear-un-casado.html">Cómo costear un casado en Costa Rica, paso a paso</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 01</span></div>
+        <div class="leader"><a href="food-cost-porcentaje.html">Food cost: qué porcentaje es sano para una soda</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 02</span></div>
+        <div class="leader"><a href="punto-de-equilibrio.html">Punto de equilibrio: cuántos platos vender al mes para no perder</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 03</span></div>
+        <div class="leader"><a href="merma-costo-plato.html">Merma: la parte que se pierde al cocinar y que también hay que cobrar</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 04</span></div>
+        <div class="leader"><a href="olla-de-carne-costo-porcion.html">Olla de carne: cuánto cuesta la olla completa y cuánto cada porción</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 05</span></div>
+        <div class="leader"><a href="desayuno-tipico-costo-gallo-pinto.html">Desayuno típico: cuánto cuesta el gallo pinto con huevo, queso y café</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 06</span></div>
+        <div class="leader"><a href="inventario-cuanto-vale-y-cuantos-platos-salen.html">Inventario: cuánto vale lo que tenés guardado y cuántos platos salen de ahí</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 07</span></div>
+        <div class="leader"><a href="ventas-y-gastos-gano-o-perdio.html">Ventas y gastos: cómo saber si la soda ganó o perdió en el mes</a><span class="dots" aria-hidden="true"></span><span class="pg">GUÍA N.º 08</span></div>
+        <div class="leader"><a href="../index.html#top">La calculadora de food cost, en la portada</a><span class="dots" aria-hidden="true"></span><span class="pg">COSTEA</span></div>
+      </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-in">
+    <a class="logo" href="../index.html"><span class="dot"></span>COSTEA</a>
+    <p>Kit de Costos y Precios para Sodas y Restaurantes — plantilla de Excel + guía en PDF. $14.99 pago único. Hecho para negocios de comida de Costa Rica y Latinoamérica.</p>
+    <p>© 2026 COSTEA</p>
+  </div>
+</footer>
+
+</body>
+</html>
